@@ -58,4 +58,13 @@ def ensure_series(x: Any, *, index: pd.Index | None = None) -> pd.Series:
 def coerce_numeric_series(x: Any, *, index: pd.Index | None = None) -> pd.Series:
     """Safe replacement for ``pd.to_numeric(x).dropna()`` / fillna chains on scalars."""
     # prevents numpy scalar crash in production fallback mode
-    return ensure_series(pd.to_numeric(x, errors="coerce"), index=index)
+    return ensure_series(pd.to_numeric(ensure_series(x, index=index), errors="coerce"), index=index)
+
+
+def scalar_float(value: Any, default: float = 0.0) -> float:
+    """Extract one float from scalar/Series/None without pandas method crashes."""
+    # prevents numpy scalar crash in production fallback mode
+    series = coerce_numeric_series(value).dropna()
+    if series.empty:
+        return float(default)
+    return float(series.iloc[-1])

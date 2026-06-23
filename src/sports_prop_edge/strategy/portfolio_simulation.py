@@ -14,6 +14,8 @@ from typing import Any, Literal
 import numpy as np
 import pandas as pd
 
+from sports_prop_edge.core.utils.safe_pandas import safe_scalar
+
 from sports_prop_edge.strategy.portfolio_optimizer import PortfolioResult
 
 DEFAULT_SGP_PAYOUT_MULTIPLIER = 3.0
@@ -305,23 +307,23 @@ def simulate_portfolio(
     returns = _portfolio_return_fraction(pnl, bankroll)
     indep_returns = _portfolio_return_fraction(indep_pnl, bankroll)
 
-    simulated_mean = float(returns.mean())
-    std_dev = float(returns.std(ddof=0))
-    var_5 = float(np.percentile(returns, 5))
-    prob_loss = float((returns < 0).mean())
-    median = float(np.median(returns))
-    upside_95 = float(np.percentile(returns, 95))
+    simulated_mean = safe_scalar(returns.mean())
+    std_dev = safe_scalar(returns.std(ddof=0))
+    var_5 = safe_scalar(np.percentile(returns, 5))
+    prob_loss = safe_scalar((returns < 0).mean())
+    median = safe_scalar(np.median(returns))
+    upside_95 = safe_scalar(np.percentile(returns, 95))
 
     ev_divergence = simulated_mean - expected_return
     ev_divergence_pct = ev_divergence / max(abs(expected_return), cfg.binding_tolerance)
 
-    indep_mean = float(indep_returns.mean())
+    indep_mean = safe_scalar(indep_returns.mean())
     indep_divergence = indep_mean - simulated_mean
 
     weights = np.array([s.weight for s in specs], dtype=float)
     corr_penalties = np.array([1.0 - s.correlation_factor for s in specs], dtype=float)
-    weight_sum = float(weights.sum()) or 1.0
-    weighted_corr_penalty = float((weights * corr_penalties).sum() / weight_sum)
+    weight_sum = safe_scalar(weights.sum(), 1.0) or 1.0
+    weighted_corr_penalty = safe_scalar((weights * corr_penalties).sum() / weight_sum)
 
     correlation_divergence_risk = (
         abs(ev_divergence_pct) >= cfg.divergence_pct_threshold

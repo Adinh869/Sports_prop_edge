@@ -17,7 +17,15 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from sports_prop_edge.core.utils.safe_types import coerce_numeric_series
+from sports_prop_edge.core.utils.safe_pandas import (
+    safe_dropna as _sp_safe_dropna,
+    safe_fillna as _sp_safe_fillna,
+    safe_frame_column,
+    safe_frame_numeric_column,
+    safe_frame_numeric_dropna,
+    safe_numeric_series,
+    safe_scalar,
+)
 from sports_prop_edge.models.calibration import (
     build_calibration_factors,
     probability_bin_label,
@@ -123,7 +131,7 @@ class LearningOverlay:
             regime_threshold_adjustments=dict(data.get("regime_threshold_adjustments", {})),
             ev_bias_by_sport=dict(data.get("ev_bias_by_sport", {})),
             ev_bias_by_market=dict(data.get("ev_bias_by_market", {})),
-            global_ev_bias_factor=float(data.get("global_ev_bias_factor", 1.0)),
+            global_ev_bias_factor=safe_scalar(data.get("global_ev_bias_factor"), 1.0),
             simulation_bias=dict(data.get("simulation_bias", {})),
             warnings=list(data.get("warnings", [])),
         )
@@ -225,7 +233,12 @@ def save_learning_overlay(overlay: LearningOverlay, root: Path | None = None) ->
 
 
 def _clamp(value: float, lo: float, hi: float) -> float:
-    return float(max(lo, min(hi, value)))
+    return safe_scalar(max(lo, min(hi, value)), lo)
+
+
+def _ingest_dataframe_column(frame: pd.DataFrame, column: str) -> pd.Series:
+    """Ingest one ledger/overlay numeric column with scalar-safe normalization."""
+    return safe_frame_column(frame, column)
 
 
 def _pair_key(sport: str, market_a: str, market_b: str) -> str:
@@ -244,27 +257,31 @@ def _market_key(sport: str, market: str) -> str:
 def safe_fillna(value: Any, fill_value: Any = 0.0) -> pd.Series:
     """Fill missing values for pandas objects; coerce numpy/python scalars safely."""
     # prevents numpy scalar crash in production fallback mode
-    return coerce_numeric_series(value).fillna(fill_value)
+    return _sp_safe_fillna(safe_numeric_series(value), fill_value)
 
 
 def frame_numeric_column(frame: pd.DataFrame, column: str) -> pd.Series:
     """Extract a numeric Series from a DataFrame column (missing column -> NaN series)."""
-    if column not in frame.columns:
-        return pd.Series(np.nan, index=frame.index, dtype=float)
     # prevents numpy scalar crash in production fallback mode
-    return coerce_numeric_series(frame[column], index=frame.index)
+    return safe_frame_numeric_column(frame, column)
 
 
 def safe_dropna(value: Any) -> pd.Series:
     """Drop missing values; always returns a Series (never crashes on scalars)."""
     # prevents numpy scalar crash in production fallback mode
-    return coerce_numeric_series(value).dropna()
+    return _sp_safe_dropna(safe_numeric_series(value))
 
 
 def safe_numeric_column_dropna(frame: pd.DataFrame, column: str) -> pd.Series:
     """Safe replacement for ``pd.to_numeric(frame[col]).dropna()``."""
     # prevents numpy scalar crash in production fallback mode
-    return coerce_numeric_series(frame_numeric_column(frame, column)).dropna()
+    return safe_frame_numeric_dropna(frame, column)
+
+
+def _simulation_scalar(simulation: SimulationResult, attr: str, default: float = 0.0) -> float:
+    """Read one simulation metric with scalar-safe coercion."""
+    # prevents numpy scalar crash in production fallback mode
+    return safe_scalar(getattr(simulation, attr, default), default)
 
 
 def _filter_ledger_window(ledger: pd.DataFrame, days: int | None) -> pd.DataFrame:
@@ -311,8 +328,8 @@ def compute_sport_market_bias(
     for sport, grp in bets.groupby("sport", dropna=False):
         if len(grp) < cfg.min_samples_sport:
             continue
-        pred = float(grp["predicted_edge"].mean())
-        real = float(grp["realized_edge"].mean())
+        pred = safe_scalar(grp["predicted_edge"].mean())
+        real = safe_scalar(grp["realized_edge"].mean())
         bias = real - pred
         correction = _clamp(1.0 + bias, 1.0 + EV_BIAS_CLAMP[0], 1.0 + EV_BIAS_CLAMP[1])
         biases.append(
@@ -337,8 +354,8 @@ def compute_sport_market_bias(
         for (sport, market), grp in legs.groupby(["sport", "market"], dropna=False):
             if len(grp) < cfg.min_samples_market:
                 continue
-            pred = float(grp["prob"].mean())
-            real = float(grp["hit"].mean())
+            pred = safe_scalar(grp["prob"].mean())
+            real = safe_scalar(grp["hit"].mean())
             bias = real - pred
             correction = _clamp(1.0 + bias, 1.0 + EV_BIAS_CLAMP[0], 1.0 + EV_BIAS_CLAMP[1])
             biases.append(
@@ -371,15 +388,15 @@ def compute_simulation_vs_actual_bias(
         return report
 
     realized = profits / max(bankroll, 1e-9)
-    report.realized_mean_return = float(realized.mean())
-    report.realized_loss_rate = float((profits < 0).mean())
+    report.realized_mean_return = safe_scalar(realized.mean())
+    report.realized_loss_rate = safe_scalar((profits < 0).mean())
 
     if simulation is None:
         report.return_bias = report.realized_mean_return
         return report
 
-    report.simulated_mean_return = float(simulation.simulated_mean_return)
-    report.simulated_loss_probability = float(simulation.probability_of_loss)
+    report.simulated_mean_return = _simulation_scalar(simulation, "simulated_mean_return")
+    report.simulated_loss_probability = _simulation_scalar(simulation, "probability_of_loss")
     report.return_bias = report.realized_mean_return - report.simulated_mean_return
     denom = max(abs(report.simulated_mean_return), 1e-9)
     report.return_bias_pct = report.return_bias / denom
@@ -412,7 +429,7 @@ def _pair_correction_frame(
                 "sport": sport,
                 "market_a": pair[0],
                 "market_b": pair[1],
-                "expected": float(expected),
+                "expected": safe_scalar(expected),
                 "win": str(row.get("result", "")).upper() == "WIN",
                 "ref_date": pd.to_datetime(row.get("slate_date", row.get("date_graded")), errors="coerce"),
             }
@@ -451,10 +468,10 @@ def build_correlation_drift_overlay(
         def _corr(slice_df: pd.DataFrame) -> float | None:
             if slice_df.empty:
                 return None
-            expected = float(slice_df["expected"].mean())
+            expected = safe_scalar(slice_df["expected"].mean())
             if expected <= 0.05:
                 return None
-            return float(slice_df["win"].mean() / expected)
+            return safe_scalar(slice_df["win"].mean() / expected)
 
         recent_corr = _corr(recent)
         prior_corr = _corr(prior) if len(prior) >= cfg.min_samples_pair else None
@@ -495,8 +512,8 @@ def build_calibration_drift_overlay(
         for (sport, prob_bin), grp in work.groupby(["sport", "prob_bin"], dropna=False):
             if len(grp) < cfg.min_samples_bin:
                 continue
-            avg_pred = float(grp["prob"].mean())
-            hit_rate = float(grp["hit"].mean())
+            avg_pred = safe_scalar(grp["prob"].mean())
+            hit_rate = safe_scalar(grp["hit"].mean())
             if avg_pred <= 0.01 or avg_pred >= 0.99:
                 continue
             pred_center = avg_pred - 0.5
@@ -515,7 +532,7 @@ def build_calibration_drift_overlay(
 
     overlay: dict[str, float] = {}
     for key, recent_factor in recent_shrink.items():
-        base_factor = full_shrink.get(key, base.get(key, 1.0))
+        base_factor = safe_scalar(full_shrink.get(key, base.get(key, 1.0)), 1.0)
         if abs(base_factor) < 1e-9:
             continue
         raw = recent_factor / base_factor
@@ -562,8 +579,8 @@ def adapt_regime_thresholds(
             volatile = _clamp(volatile * 1.05, *THRESHOLD_CLAMP)
 
     return {
-        "regime_shift_threshold": float(shift),
-        "regime_volatile_threshold": float(volatile),
+        "regime_shift_threshold": safe_scalar(shift, corr_cfg.regime_shift_threshold),
+        "regime_volatile_threshold": safe_scalar(volatile, corr_cfg.regime_volatile_threshold),
     }
 
 
@@ -585,7 +602,7 @@ def build_ev_bias_overlay(
             by_market[_market_key(item.sport, item.market)] = item.correction_factor
 
     sport_factors = {
-        sport: _clamp(1.0 + float(np.mean(vals)), 1.0 + EV_BIAS_CLAMP[0], 1.0 + EV_BIAS_CLAMP[1])
+        sport: _clamp(1.0 + safe_scalar(np.mean(vals), 0.0), 1.0 + EV_BIAS_CLAMP[0], 1.0 + EV_BIAS_CLAMP[1])
         for sport, vals in by_sport.items()
         if len(vals) >= cfg.min_samples_sport
     }
@@ -711,7 +728,7 @@ def apply_correlation_drift(
     if not overlay or not overlay.correlation_drift:
         return correction_factor
     key = _pair_key(sport, market_a, market_b)
-    drift = overlay.correlation_drift.get(key, 1.0)
+    drift = safe_scalar(overlay.correlation_drift.get(key, 1.0), 1.0)
     return _clamp(correction_factor * drift, 0.75, 1.05)
 
 
@@ -725,7 +742,7 @@ def apply_calibration_drift(
     if not overlay or not overlay.calibration_drift:
         return shrink_factor
     key = _bin_key(sport, probability_bin_label(probability))
-    drift = overlay.calibration_drift.get(key, 1.0)
+    drift = safe_scalar(overlay.calibration_drift.get(key, 1.0), 1.0)
     return _clamp(shrink_factor * drift, 0.75, 1.05)
 
 
@@ -738,11 +755,11 @@ def apply_ev_bias(
     """Apply sport/market/global EV bias correction (opt-in)."""
     if not overlay:
         return edge
-    factor = overlay.global_ev_bias_factor
-    factor *= overlay.ev_bias_by_sport.get(str(sport).upper(), 1.0)
+    factor = safe_scalar(overlay.global_ev_bias_factor, 1.0)
+    factor *= safe_scalar(overlay.ev_bias_by_sport.get(str(sport).upper(), 1.0), 1.0)
     if market:
-        factor *= overlay.ev_bias_by_market.get(_market_key(sport, market), 1.0)
-    return float(edge * factor)
+        factor *= safe_scalar(overlay.ev_bias_by_market.get(_market_key(sport, market), 1.0), 1.0)
+    return safe_scalar(edge * factor, edge)
 
 
 def adjusted_correlation_config(
@@ -762,11 +779,13 @@ def adjusted_correlation_config(
         factor_ceil=cfg.factor_ceil,
         regime_recent_bets=cfg.regime_recent_bets,
         regime_prior_min_bets=cfg.regime_prior_min_bets,
-        regime_shift_threshold=float(
-            adj.get("regime_shift_threshold", cfg.regime_shift_threshold)
+        regime_shift_threshold=safe_scalar(
+            adj.get("regime_shift_threshold", cfg.regime_shift_threshold),
+            cfg.regime_shift_threshold,
         ),
-        regime_volatile_threshold=float(
-            adj.get("regime_volatile_threshold", cfg.regime_volatile_threshold)
+        regime_volatile_threshold=safe_scalar(
+            adj.get("regime_volatile_threshold", cfg.regime_volatile_threshold),
+            cfg.regime_volatile_threshold,
         ),
         regime_drift_alpha_scale=cfg.regime_drift_alpha_scale,
         regime_volatile_alpha_scale=cfg.regime_volatile_alpha_scale,

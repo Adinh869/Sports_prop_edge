@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal
 
-from sports_prop_edge.core.utils.safe_types import coerce_numeric_series
+from sports_prop_edge.core.utils.safe_pandas import safe_scalar, safe_series
 from sports_prop_edge.strategy.learning_feedback import (
     LearningLoopResult,
     LearningOverlay,
@@ -109,7 +109,7 @@ class GovernanceState:
             records[key] = CorrectionRecord(
                 family=str(raw.get("family", "")),
                 key=str(raw.get("key", key)),
-                values=[float(v) for v in raw.get("values", [])],
+                values=[safe_scalar(v, 0.0) for v in raw.get("values", [])],
                 last_reinforced_cycle=int(raw.get("last_reinforced_cycle", 0)),
                 suppressed=bool(raw.get("suppressed", False)),
             )
@@ -264,16 +264,13 @@ def _record_id(family: str, key: str) -> str:
 
 
 def _clamp(value: float, lo: float, hi: float) -> float:
-    return float(max(lo, min(hi, value)))
+    return safe_scalar(max(lo, min(hi, value)), lo)
 
 
 def _safe_overlay_float(value: Any, default: float) -> float:
     """Coerce overlay numeric values without scalar pandas/numpy crashes."""
     # prevents numpy scalar crash in production fallback mode
-    series = coerce_numeric_series(value).dropna()
-    if series.empty:
-        return float(default)
-    return float(series.iloc[-1])
+    return safe_scalar(safe_series(value), default)
 
 
 def _log_drift(factor: float, neutral: float = 1.0) -> float:
@@ -342,7 +339,7 @@ def _aggregate_change_score(
     prev_map = {(_record_id(f, k)): v for f, k, v in _iter_factor_corrections(previous)}
     for family, key, val in _iter_factor_corrections(proposed):
         rid = _record_id(family, key)
-        prev_val = prev_map.get(rid, 1.0)
+        prev_val = _safe_overlay_float(prev_map.get(rid, 1.0), 1.0)
         score += _log_drift(val / prev_val if prev_val else val)
     for family, key, val in _iter_factor_corrections(previous):
         rid = _record_id(family, key)
@@ -353,7 +350,7 @@ def _aggregate_change_score(
     for k, v in regime_props.items():
         prev_v = _safe_overlay_float(prev_regime.get(k, v), _safe_overlay_float(v, 0.0))
         score += abs(_safe_overlay_float(v, 0.0) - prev_v)
-    return float(score)
+    return safe_scalar(score, 0.0)
 
 
 def analyze_learning_stability_risks(
