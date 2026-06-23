@@ -17,6 +17,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from sports_prop_edge.core.utils.safe_types import ensure_series
 from sports_prop_edge.models.calibration import (
     build_calibration_factors,
     probability_bin_label,
@@ -240,53 +241,32 @@ def _market_key(sport: str, market: str) -> str:
     return f"{sport.upper()}|{market.lower()}"
 
 
-def safe_fillna(value: Any, fill_value: Any = 0.0) -> Any:
+def safe_fillna(value: Any, fill_value: Any = 0.0) -> pd.Series:
     """Fill missing values for pandas objects; coerce numpy/python scalars safely."""
-    if value is None:
-        return fill_value
-    if isinstance(value, pd.Series):
-        return value.fillna(fill_value)
-    if isinstance(value, pd.DataFrame):
-        return value.fillna(fill_value)
-    if isinstance(value, np.ndarray):
-        if value.ndim == 0:
-            item = value.item()
-            return fill_value if pd.isna(item) else item
-        return pd.Series(value).fillna(fill_value)
-    if isinstance(value, (np.floating, np.integer, float, int)):
-        return fill_value if pd.isna(value) else value
-    try:
-        if pd.isna(value):
-            return fill_value
-    except (TypeError, ValueError):
-        pass
-    fillna_method = getattr(value, "fillna", None)
-    if callable(fillna_method):
-        return fillna_method(fill_value)
-    return value
+    # prevents numpy scalar crash in production fallback mode
+    series = pd.to_numeric(ensure_series(value), errors="coerce")
+    return series.fillna(fill_value)
 
 
 def frame_numeric_column(frame: pd.DataFrame, column: str) -> pd.Series:
     """Extract a numeric Series from a DataFrame column (missing column -> NaN series)."""
     if column not in frame.columns:
         return pd.Series(np.nan, index=frame.index, dtype=float)
-    return pd.to_numeric(frame[column], errors="coerce")
+    # prevents numpy scalar crash in production fallback mode
+    raw = ensure_series(frame[column], index=frame.index)
+    return pd.to_numeric(raw, errors="coerce")
 
 
 def safe_dropna(value: Any) -> pd.Series:
     """Drop missing values; always returns a Series (never crashes on scalars)."""
-    if isinstance(value, pd.Series):
-        return value.dropna()
-    coerced = pd.to_numeric(value, errors="coerce")
-    if isinstance(coerced, pd.Series):
-        return coerced.dropna()
-    if pd.isna(coerced):
-        return pd.Series(dtype=float)
-    return pd.Series([coerced], dtype=float)
+    # prevents numpy scalar crash in production fallback mode
+    series = pd.to_numeric(ensure_series(value), errors="coerce")
+    return series.dropna()
 
 
 def safe_numeric_column_dropna(frame: pd.DataFrame, column: str) -> pd.Series:
     """Safe replacement for ``pd.to_numeric(frame[col]).dropna()``."""
+    # prevents numpy scalar crash in production fallback mode
     return safe_dropna(frame_numeric_column(frame, column))
 
 

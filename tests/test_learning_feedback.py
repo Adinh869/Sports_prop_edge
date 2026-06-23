@@ -200,9 +200,9 @@ def test_save_and_load_roundtrip(tmp_path: Path):
 
 
 def test_safe_fillna_scalar_and_series():
-    assert safe_fillna(np.float64(np.nan), 0.0) == 0.0
-    assert safe_fillna(np.float64(1.25), 0.0) == pytest.approx(1.25)
-    assert safe_fillna(2, 0.0) == 2
+    assert safe_fillna(np.float64(np.nan), 0.0).iloc[0] == 0.0
+    assert safe_fillna(np.float64(1.25), 0.0).iloc[0] == pytest.approx(1.25)
+    assert safe_fillna(2, 0.0).iloc[0] == 2
     series = pd.Series([1.0, np.nan, 3.0])
     filled = safe_fillna(series, 0.0)
     assert list(filled) == [1.0, 0.0, 3.0]
