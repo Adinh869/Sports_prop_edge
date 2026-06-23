@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 import pytest
+import numpy as np
 
 from sports_prop_edge.strategy.correlation import CorrelationCalibrationConfig, EmpiricalPairStats
 from sports_prop_edge.strategy.learning_feedback import (
@@ -19,6 +20,9 @@ from sports_prop_edge.strategy.learning_feedback import (
     learning_loop_design,
     load_learning_overlay,
     run_learning_loop,
+    safe_dropna,
+    safe_fillna,
+    safe_numeric_column_dropna,
     save_learning_overlay,
 )
 from sports_prop_edge.strategy.portfolio_simulation import SimulationResult
@@ -193,3 +197,49 @@ def test_save_and_load_roundtrip(tmp_path: Path):
     loaded = load_learning_overlay(tmp_path)
     assert loaded.global_ev_bias_factor == pytest.approx(1.01)
     assert loaded.warnings == ["ok"]
+
+
+def test_safe_fillna_scalar_and_series():
+    assert safe_fillna(np.float64(np.nan), 0.0) == 0.0
+    assert safe_fillna(np.float64(1.25), 0.0) == pytest.approx(1.25)
+    assert safe_fillna(2, 0.0) == 2
+    series = pd.Series([1.0, np.nan, 3.0])
+    filled = safe_fillna(series, 0.0)
+    assert list(filled) == [1.0, 0.0, 3.0]
+
+
+def test_safe_dropna_scalar_does_not_crash():
+    dropped = safe_dropna(np.float64(np.nan))
+    assert dropped.empty
+    dropped_val = safe_dropna(np.float64(2.5))
+    assert len(dropped_val) == 1
+    assert dropped_val.iloc[0] == pytest.approx(2.5)
+
+
+def test_safe_numeric_column_dropna_missing_column():
+    frame = pd.DataFrame({"result": ["WIN"]})
+    dropped = safe_numeric_column_dropna(frame, "profit_units")
+    assert dropped.empty
+
+
+def test_safe_numeric_column_dropna_with_values():
+    frame = pd.DataFrame({"profit_units": [1.0, np.nan, 2.5]})
+    dropped = safe_numeric_column_dropna(frame, "profit_units")
+    assert list(dropped) == [1.0, 2.5]
+
+
+def test_compute_simulation_bias_missing_profit_units_column():
+    graded = pd.DataFrame({"result": ["WIN", "LOSS"]})
+    report = compute_simulation_vs_actual_bias(graded, None)
+    assert report.n_graded_bets == 0
+
+
+def test_compute_sport_market_bias_missing_edge_columns():
+    graded = pd.DataFrame(
+        {
+            "result": ["WIN", "LOSS"],
+            "sport": ["NBA", "NBA"],
+        }
+    )
+    biases = compute_sport_market_bias(graded)
+    assert biases == []

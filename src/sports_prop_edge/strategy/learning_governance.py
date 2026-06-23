@@ -19,6 +19,7 @@ from sports_prop_edge.strategy.learning_feedback import (
     LearningOverlay,
     load_learning_overlay,
     run_learning_loop,
+    safe_fillna,
     save_learning_overlay,
 )
 from sports_prop_edge.strategy.portfolio_simulation import SimulationResult
@@ -266,6 +267,15 @@ def _clamp(value: float, lo: float, hi: float) -> float:
     return float(max(lo, min(hi, value)))
 
 
+def _safe_overlay_float(value: Any, default: float) -> float:
+    """Coerce overlay numeric values without scalar pandas/numpy crashes."""
+    cleaned = safe_fillna(value, default)
+    try:
+        return float(cleaned)
+    except (TypeError, ValueError):
+        return float(default)
+
+
 def _log_drift(factor: float, neutral: float = 1.0) -> float:
     if factor <= 0:
         return 0.0
@@ -311,14 +321,14 @@ def _sign_changes(values: list[float]) -> int:
 def _iter_factor_corrections(overlay: LearningOverlay) -> list[tuple[str, str, float]]:
     items: list[tuple[str, str, float]] = []
     for key, val in overlay.correlation_drift.items():
-        items.append(("correlation_drift", key, float(val)))
+        items.append(("correlation_drift", key, _safe_overlay_float(val, 1.0)))
     for key, val in overlay.calibration_drift.items():
-        items.append(("calibration_drift", key, float(val)))
+        items.append(("calibration_drift", key, _safe_overlay_float(val, 1.0)))
     for key, val in overlay.ev_bias_by_sport.items():
-        items.append(("ev_bias_sport", key, float(val)))
+        items.append(("ev_bias_sport", key, _safe_overlay_float(val, 1.0)))
     for key, val in overlay.ev_bias_by_market.items():
-        items.append(("ev_bias_market", key, float(val)))
-    items.append(("global_ev", "global", float(overlay.global_ev_bias_factor)))
+        items.append(("ev_bias_market", key, _safe_overlay_float(val, 1.0)))
+    items.append(("global_ev", "global", _safe_overlay_float(overlay.global_ev_bias_factor, 1.0)))
     return items
 
 
@@ -341,8 +351,8 @@ def _aggregate_change_score(
     regime_props = proposed.regime_threshold_adjustments
     prev_regime = previous.regime_threshold_adjustments if previous else {}
     for k, v in regime_props.items():
-        prev_v = float(prev_regime.get(k, v))
-        score += abs(float(v) - prev_v)
+        prev_v = _safe_overlay_float(prev_regime.get(k, v), _safe_overlay_float(v, 0.0))
+        score += abs(_safe_overlay_float(v, 0.0) - prev_v)
     return float(score)
 
 
@@ -370,7 +380,7 @@ def analyze_learning_stability_risks(
 
     amp_risk = "low"
     sim_flag = bool(proposed.simulation_bias.get("correlation_divergence_flag"))
-    global_off = abs(proposed.global_ev_bias_factor - cfg.neutral_factor)
+    global_off = abs(_safe_overlay_float(proposed.global_ev_bias_factor, cfg.neutral_factor) - cfg.neutral_factor)
     if sim_flag and global_off > cfg.max_factor_velocity:
         amp_risk = "high"
     elif global_off > cfg.max_factor_velocity * 0.5:
@@ -379,14 +389,14 @@ def analyze_learning_stability_risks(
     regime_risk = "low"
     if previous and proposed.regime_threshold_adjustments:
         for k, v in proposed.regime_threshold_adjustments.items():
-            prev_v = float(previous.regime_threshold_adjustments.get(k, v))
-            if abs(v - prev_v) > cfg.max_threshold_velocity:
+            prev_v = _safe_overlay_float(previous.regime_threshold_adjustments.get(k, v), _safe_overlay_float(v, 0.0))
+            if abs(_safe_overlay_float(v, 0.0) - prev_v) > cfg.max_threshold_velocity:
                 regime_risk = "medium"
                 break
     flagged = [
         k
         for k, v in proposed.correlation_drift.items()
-        if abs(v - cfg.neutral_factor) > cfg.max_factor_velocity * 2
+        if abs(_safe_overlay_float(v, cfg.neutral_factor) - cfg.neutral_factor) > cfg.max_factor_velocity * 2
     ]
 
     notes = []
@@ -418,19 +428,19 @@ def _prior_factor_value(
 ) -> float:
     rid = _record_id(family, key)
     if rid in state.records and state.records[rid].values:
-        return float(state.records[rid].values[-1])
+        return _safe_overlay_float(state.records[rid].values[-1], neutral)
     if previous is None:
         return neutral
     if family == "correlation_drift":
-        return float(previous.correlation_drift.get(key, neutral))
+        return _safe_overlay_float(previous.correlation_drift.get(key, neutral), neutral)
     if family == "calibration_drift":
-        return float(previous.calibration_drift.get(key, neutral))
+        return _safe_overlay_float(previous.calibration_drift.get(key, neutral), neutral)
     if family == "ev_bias_sport":
-        return float(previous.ev_bias_by_sport.get(key, neutral))
+        return _safe_overlay_float(previous.ev_bias_by_sport.get(key, neutral), neutral)
     if family == "ev_bias_market":
-        return float(previous.ev_bias_by_market.get(key, neutral))
+        return _safe_overlay_float(previous.ev_bias_by_market.get(key, neutral), neutral)
     if family == "global_ev":
-        return float(previous.global_ev_bias_factor)
+        return _safe_overlay_float(previous.global_ev_bias_factor, neutral)
     return neutral
 
 
@@ -583,9 +593,9 @@ def govern_learning_overlay(
     regime_adj: dict[str, float] = {}
     prev_regime = previous.regime_threshold_adjustments if previous else {}
     for k, proposed_val in proposed.regime_threshold_adjustments.items():
-        prior = float(prev_regime.get(k, proposed_val))
+        prior = _safe_overlay_float(prev_regime.get(k, proposed_val), _safe_overlay_float(proposed_val, 0.0))
         clipped, was_clipped = _velocity_limit(
-            float(proposed_val),
+            _safe_overlay_float(proposed_val, prior),
             prior,
             cfg.max_threshold_velocity,
             neutral=prior,

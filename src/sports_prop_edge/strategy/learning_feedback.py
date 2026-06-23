@@ -240,6 +240,56 @@ def _market_key(sport: str, market: str) -> str:
     return f"{sport.upper()}|{market.lower()}"
 
 
+def safe_fillna(value: Any, fill_value: Any = 0.0) -> Any:
+    """Fill missing values for pandas objects; coerce numpy/python scalars safely."""
+    if value is None:
+        return fill_value
+    if isinstance(value, pd.Series):
+        return value.fillna(fill_value)
+    if isinstance(value, pd.DataFrame):
+        return value.fillna(fill_value)
+    if isinstance(value, np.ndarray):
+        if value.ndim == 0:
+            item = value.item()
+            return fill_value if pd.isna(item) else item
+        return pd.Series(value).fillna(fill_value)
+    if isinstance(value, (np.floating, np.integer, float, int)):
+        return fill_value if pd.isna(value) else value
+    try:
+        if pd.isna(value):
+            return fill_value
+    except (TypeError, ValueError):
+        pass
+    fillna_method = getattr(value, "fillna", None)
+    if callable(fillna_method):
+        return fillna_method(fill_value)
+    return value
+
+
+def frame_numeric_column(frame: pd.DataFrame, column: str) -> pd.Series:
+    """Extract a numeric Series from a DataFrame column (missing column -> NaN series)."""
+    if column not in frame.columns:
+        return pd.Series(np.nan, index=frame.index, dtype=float)
+    return pd.to_numeric(frame[column], errors="coerce")
+
+
+def safe_dropna(value: Any) -> pd.Series:
+    """Drop missing values; always returns a Series (never crashes on scalars)."""
+    if isinstance(value, pd.Series):
+        return value.dropna()
+    coerced = pd.to_numeric(value, errors="coerce")
+    if isinstance(coerced, pd.Series):
+        return coerced.dropna()
+    if pd.isna(coerced):
+        return pd.Series(dtype=float)
+    return pd.Series([coerced], dtype=float)
+
+
+def safe_numeric_column_dropna(frame: pd.DataFrame, column: str) -> pd.Series:
+    """Safe replacement for ``pd.to_numeric(frame[col]).dropna()``."""
+    return safe_dropna(frame_numeric_column(frame, column))
+
+
 def _filter_ledger_window(ledger: pd.DataFrame, days: int | None) -> pd.DataFrame:
     if ledger.empty or days is None:
         return ledger
@@ -276,8 +326,8 @@ def compute_sport_market_bias(
     biases: list[SportMarketBias] = []
 
     bets = graded.copy()
-    bets["predicted_edge"] = pd.to_numeric(bets.get("dfs_edge"), errors="coerce")
-    bets["realized_edge"] = pd.to_numeric(bets.get("profit_units"), errors="coerce")
+    bets["predicted_edge"] = safe_fillna(frame_numeric_column(bets, "dfs_edge"))
+    bets["realized_edge"] = safe_fillna(frame_numeric_column(bets, "profit_units"))
     bets = bets[bets["predicted_edge"].notna() & bets["realized_edge"].notna()].copy()
     bets["sport"] = bets["sport"].astype(str).str.upper()
 
@@ -302,7 +352,7 @@ def compute_sport_market_bias(
 
     legs = explode_ledger_to_legs(graded)
     if not legs.empty:
-        legs["prob"] = pd.to_numeric(legs["model_probability_raw"], errors="coerce")
+        legs["prob"] = safe_fillna(frame_numeric_column(legs, "model_probability_raw"))
         legs = legs[legs["prob"].notna()].copy()
         legs["hit"] = legs["leg_result"].astype(str).str.upper() == "WIN"
         legs["sport"] = legs["sport"].astype(str).str.upper()
@@ -337,7 +387,7 @@ def compute_simulation_vs_actual_bias(
 ) -> SimulationBiasReport:
     """Compare Monte Carlo portfolio forecast to realized graded bet returns."""
     graded = _graded_bets(ledger)
-    profits = pd.to_numeric(graded.get("profit_units"), errors="coerce").dropna()
+    profits = safe_numeric_column_dropna(graded, "profit_units")
     report = SimulationBiasReport(n_graded_bets=int(len(profits)))
 
     if profits.empty:
@@ -459,7 +509,7 @@ def build_calibration_drift_overlay(
         if legs.empty:
             return {}
         work = legs.copy()
-        work["prob"] = pd.to_numeric(work["model_probability_raw"], errors="coerce")
+        work["prob"] = safe_fillna(frame_numeric_column(work, "model_probability_raw"))
         work = work[work["prob"].notna()].copy()
         work["hit"] = work["leg_result"].astype(str).str.upper() == "WIN"
         work["sport"] = work["sport"].astype(str).str.upper()
