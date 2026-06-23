@@ -1,0 +1,85 @@
+# COPY THIS ENTIRE FILE CONTENT - paste into PowerShell as one block
+# Or save as bootstrap.ps1 after fixing encoding, then: .\tools\bootstrap.ps1
+
+cd "C:\Users\Alex's Liar\Desktop\sports_prop_edge"
+
+.\.venv\Scripts\python.exe -c @"
+from pathlib import Path
+r = Path('.').resolve()
+for p in r.rglob('*'):
+    if '.venv' in p.parts or '__pycache__' in p.parts: continue
+    if p.suffix.lower() not in {'.py', '.ps1', '.csv', '.bat', '.mdc', '.json'}: continue
+    d = p.read_bytes()
+    if b'\x00' not in d and not d.startswith(b'\xff\xfe'): continue
+    enc = 'utf-16' if d.startswith(b'\xff\xfe') else 'utf-16-le'
+    p.write_text(d.decode(enc), encoding='utf-8', newline='\n')
+    print('fixed', p)
+"@
+
+function Write-Utf8Ps1($relPath, $content) {
+    $path = Join-Path (Get-Location) $relPath
+    $dir = Split-Path $path -Parent
+    if ($dir -and -not (Test-Path $dir)) { New-Item -ItemType Directory -Path $dir | Out-Null }
+    $utf8bom = New-Object System.Text.UTF8Encoding $true
+    [System.IO.File]::WriteAllText($path, ($content.TrimEnd() + "`r`n"), $utf8bom)
+    Write-Host "wrote $path"
+}
+
+Write-Utf8Ps1 "tools\repair_utf8.ps1" @'
+$ErrorActionPreference = "Stop"
+$Root = Split-Path -Parent $PSScriptRoot
+Set-Location $Root
+$Python = Join-Path $Root ".venv\Scripts\python.exe"
+$FixEnc = Join-Path $Root "tools\fix_enc.py"
+$ImportTest = Join-Path $Root "tools\_import_test.py"
+Write-Host "[repair] project: $Root"
+if (-not (Test-Path $Python)) { Write-Host "[repair] ERROR: missing $Python"; exit 1 }
+Write-Host "[repair] running fix_enc.py..."
+& $Python $FixEnc
+if ($LASTEXITCODE -ne 0) { Write-Host "[repair] fix_enc failed exit $LASTEXITCODE"; exit $LASTEXITCODE }
+$env:PYTHONPATH = Join-Path $Root "src"
+$body = "from sports_prop_edge.strategy.payouts import PayoutProfile`nfrom sports_prop_edge.strategy.card_builder import CardRules`nprint('imports ok')"
+$utf8 = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText($ImportTest, $body, $utf8)
+Write-Host "[repair] testing imports..."
+& $Python $ImportTest
+$code = $LASTEXITCODE
+Remove-Item $ImportTest -ErrorAction SilentlyContinue
+if ($code -ne 0) { Write-Host "[repair] import test FAILED exit $code"; exit $code }
+Write-Host "[repair] all good"
+'@
+
+Write-Utf8Ps1 "run_app.ps1" @'
+$ErrorActionPreference = "Stop"
+$Root = $PSScriptRoot
+Set-Location $Root
+$Python = Join-Path $Root ".venv\Scripts\python.exe"
+$Streamlit = Join-Path $Root ".venv\Scripts\streamlit.exe"
+$App = Join-Path $Root "app\streamlit_app.py"
+$Requirements = Join-Path $Root "requirements.txt"
+if (-not (Test-Path $Python)) { python -m venv (Join-Path $Root ".venv") }
+if (-not (Test-Path $Streamlit)) { & $Python -m pip install -r $Requirements }
+$env:PYTHONPATH = Join-Path $Root "src"
+Write-Host "[run_app] Starting Streamlit..."
+& $Streamlit run $App
+exit $LASTEXITCODE
+'@
+
+Write-Utf8Ps1 "run_daily_sync.ps1" @'
+$ErrorActionPreference = "Stop"
+$Root = $PSScriptRoot
+Set-Location $Root
+$Python = Join-Path $Root ".venv\Scripts\python.exe"
+$FixEnc = Join-Path $Root "tools\fix_enc.py"
+if (-not (Test-Path $Python)) { Write-Host "[sync] ERROR: missing venv"; exit 1 }
+& $Python $FixEnc
+$env:PYTHONPATH = Join-Path $Root "src"
+Write-Host "[sync] Running daily sync..."
+& $Python -m sports_prop_edge.sync_main
+if ($LASTEXITCODE -ne 0) { Write-Host "[sync] errors - see data\cache\last_sync_report.json"; exit $LASTEXITCODE }
+Write-Host "[sync] OK"
+'@
+
+Write-Host ""
+Write-Host "--- now run ---"
+.\tools\repair_utf8.ps1

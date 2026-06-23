@@ -1,0 +1,1524 @@
+........FFF..FF.....                                                     [100%]
+================================== FAILURES ===================================
+_____________ test_build_empirical_correlation_table_from_ledger ______________
+
+self =                         ledger_key  ... notes
+0  NBA-points-assists-2026-06-01-1  ...   NaN
+1  NBA-points-assists-2026... NaN
+4  NBA-points-assists-2026-06-05-1  ...   NaN
+5  NBA-points-assists-2026-06-06-1  ...   NaN
+
+[6 rows x 39 columns]
+index = 0, col = 'model_probability_source', value = 'nan', takeable = False
+
+    def _set_value(
+        self, index: IndexLabel, col, value: Scalar, takeable: bool = False
+    ) -> None:
+        """
+        Put single value at passed column and index.
+    
+        Parameters
+        ----------
+        index : Label
+            row label
+        col : Label
+            column label
+        value : scalar
+        takeable : bool, default False
+            Sets whether or not index/col interpreted as indexers
+        """
+        try:
+            if takeable:
+                icol = col
+                iindex = cast(int, index)
+            else:
+                icol = self.columns.get_loc(col)
+                iindex = self.index.get_loc(index)
+>           self._mgr.column_setitem(icol, iindex, value, inplace_only=True)
+
+.venv\Lib\site-packages\pandas\core\frame.py:4911: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\pandas\core\internals\managers.py:1526: in column_setitem
+    col_mgr.setitem_inplace(idx, value)
+.venv\Lib\site-packages\pandas\core\internals\managers.py:2228: in setitem_inplace
+    value = np_can_hold_element(arr.dtype, value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+dtype = dtype('float64'), element = 'nan'
+
+    def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
+        """
+        Raise if we cannot losslessly set this element into an ndarray with this dtype.
+    
+        Specifically about places where we disagree with numpy.  i.e. there are
+        cases where numpy will raise in doing the setitem that we do not check
+        for here, e.g. setting str "X" into a numeric ndarray.
+    
+        Returns
+        -------
+        Any
+            The element, potentially cast to the dtype.
+    
+        Raises
+        ------
+        ValueError : If we cannot losslessly store this element with this dtype.
+        """
+        if dtype == _dtype_obj:
+            return element
+    
+        tipo = _maybe_infer_dtype_type(element)
+    
+        if dtype.kind in "iu":
+            if isinstance(element, range):
+                if _dtype_can_hold_range(element, dtype):
+                    return element
+                raise LossySetitemError
+    
+            if is_integer(element) or (is_float(element) and element.is_integer()):
+                # e.g. test_setitem_series_int8 if we have a python int 1
+                #  tipo may be np.int32, despite the fact that it will fit
+                #  in smaller int dtypes.
+                info = np.iinfo(dtype)
+                if info.min <= element <= info.max:
+                    return dtype.type(element)
+                raise LossySetitemError
+    
+            if tipo is not None:
+                if tipo.kind not in "iu":
+                    if isinstance(element, np.ndarray) and element.dtype.kind == "f":
+                        # If all can be losslessly cast to integers, then we can hold them
+                        with np.errstate(invalid="ignore"):
+                            # We check afterwards if cast was losslessly, so no need to show
+                            # the warning
+                            casted = element.astype(dtype)
+                        comp = casted == element
+                        if comp.all():
+                            # Return the casted values bc they can be passed to
+                            #  np.putmask, whereas the raw values cannot.
+                            #  see TestSetitemFloatNDarrayIntoIntegerSeries
+                            return casted
+                        raise LossySetitemError
+    
+                    elif isinstance(element, ABCExtensionArray) and isinstance(
+                        element.dtype, CategoricalDtype
+                    ):
+                        # GH#52927 setting Categorical value into non-EA frame
+                        # TODO: general-case for EAs?
+                        try:
+                            casted = element.astype(dtype)
+                        except (ValueError, TypeError) as err:
+                            raise LossySetitemError from err
+                        # Check for cases of either
+                        #  a) lossy overflow/rounding or
+                        #  b) semantic changes like dt64->int64
+                        comp = casted == element
+                        if not comp.all():
+                            raise LossySetitemError
+                        return casted
+    
+                    # Anything other than integer we cannot hold
+                    raise LossySetitemError
+                if (
+                    dtype.kind == "u"
+                    and isinstance(element, np.ndarray)
+                    and element.dtype.kind == "i"
+                ):
+                    # see test_where_uint64
+                    casted = element.astype(dtype)
+                    if (casted == element).all():
+                        # TODO: faster to check (element >=0).all()?  potential
+                        #  itemsize issues there?
+                        return casted
+                    raise LossySetitemError
+                if dtype.itemsize < tipo.itemsize:
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype; we can put this into an ndarray
+                    #  losslessly iff it has no NAs
+                    arr = element._values if isinstance(element, ABCSeries) else element
+                    if arr._hasna:
+                        raise LossySetitemError
+                    return element
+    
+                return element
+    
+            raise LossySetitemError
+    
+        if dtype.kind == "f":
+            if lib.is_integer(element) or lib.is_float(element):
+                casted = dtype.type(element)
+                if np.isnan(casted) or casted == element:
+                    return casted
+                # otherwise e.g. overflow see TestCoercionFloat32
+                raise LossySetitemError
+    
+            if tipo is not None:
+                # TODO: itemsize check?
+    
+                if isinstance(tipo, CategoricalDtype):
+                    # GH#56376
+                    if tipo.categories.dtype.kind not in "iuf":
+                        # Anything other than float/integer we cannot hold
+                        raise LossySetitemError
+                    casted = np.asarray(element, dtype=dtype)
+                    if np.array_equal(casted, element, equal_nan=True):
+                        return casted
+                    raise LossySetitemError
+    
+                if tipo.kind not in "iuf":
+                    # Anything other than float/integer we cannot hold
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype or FloatingDtype;
+                    #  we can put this into an ndarray losslessly iff it has no NAs
+                    if element._hasna:
+                        raise LossySetitemError
+                    return element
+                elif tipo.itemsize > dtype.itemsize or tipo.kind != dtype.kind:
+                    if isinstance(element, np.ndarray):
+                        # e.g. TestDataFrameIndexingWhere::test_where_alignment
+                        casted = element.astype(dtype)
+                        if np.array_equal(casted, element, equal_nan=True):
+                            return casted
+                        raise LossySetitemError
+    
+                return element
+    
+>           raise LossySetitemError
+E           pandas.errors.LossySetitemError
+
+.venv\Lib\site-packages\pandas\core\dtypes\cast.py:1792: LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+self = NumpyBlock: 6 dtype: float64, indexer = (0,), value = 'nan'
+
+    def setitem(self, indexer, value) -> Block:
+        """
+        Attempt self.values[indexer] = value, possibly creating a new array.
+    
+        Parameters
+        ----------
+        indexer : tuple, list-like, array-like, slice, int
+            The subset of self.values to set
+        value : object
+            The value being set
+    
+        Returns
+        -------
+        Block
+    
+        Notes
+        -----
+        `indexer` is a direct slice/positional indexer. `value` must
+        be a compatible shape.
+        """
+    
+        value = self._standardize_fill_value(value)
+    
+        values = cast(np.ndarray, self.values)
+        if self.ndim == 2:
+            values = values.T
+    
+        # length checking
+        check_setitem_lengths(indexer, value, values)
+    
+        if self.dtype != _dtype_obj:
+            # GH48933: extract_array would convert a pd.Series value to np.ndarray
+            value = extract_array(value, extract_numpy=True)
+        try:
+>           casted = np_can_hold_element(values.dtype, value)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:1115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+dtype = dtype('float64'), element = 'nan'
+
+    def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
+        """
+        Raise if we cannot losslessly set this element into an ndarray with this dtype.
+    
+        Specifically about places where we disagree with numpy.  i.e. there are
+        cases where numpy will raise in doing the setitem that we do not check
+        for here, e.g. setting str "X" into a numeric ndarray.
+    
+        Returns
+        -------
+        Any
+            The element, potentially cast to the dtype.
+    
+        Raises
+        ------
+        ValueError : If we cannot losslessly store this element with this dtype.
+        """
+        if dtype == _dtype_obj:
+            return element
+    
+        tipo = _maybe_infer_dtype_type(element)
+    
+        if dtype.kind in "iu":
+            if isinstance(element, range):
+                if _dtype_can_hold_range(element, dtype):
+                    return element
+                raise LossySetitemError
+    
+            if is_integer(element) or (is_float(element) and element.is_integer()):
+                # e.g. test_setitem_series_int8 if we have a python int 1
+                #  tipo may be np.int32, despite the fact that it will fit
+                #  in smaller int dtypes.
+                info = np.iinfo(dtype)
+                if info.min <= element <= info.max:
+                    return dtype.type(element)
+                raise LossySetitemError
+    
+            if tipo is not None:
+                if tipo.kind not in "iu":
+                    if isinstance(element, np.ndarray) and element.dtype.kind == "f":
+                        # If all can be losslessly cast to integers, then we can hold them
+                        with np.errstate(invalid="ignore"):
+                            # We check afterwards if cast was losslessly, so no need to show
+                            # the warning
+                            casted = element.astype(dtype)
+                        comp = casted == element
+                        if comp.all():
+                            # Return the casted values bc they can be passed to
+                            #  np.putmask, whereas the raw values cannot.
+                            #  see TestSetitemFloatNDarrayIntoIntegerSeries
+                            return casted
+                        raise LossySetitemError
+    
+                    elif isinstance(element, ABCExtensionArray) and isinstance(
+                        element.dtype, CategoricalDtype
+                    ):
+                        # GH#52927 setting Categorical value into non-EA frame
+                        # TODO: general-case for EAs?
+                        try:
+                            casted = element.astype(dtype)
+                        except (ValueError, TypeError) as err:
+                            raise LossySetitemError from err
+                        # Check for cases of either
+                        #  a) lossy overflow/rounding or
+                        #  b) semantic changes like dt64->int64
+                        comp = casted == element
+                        if not comp.all():
+                            raise LossySetitemError
+                        return casted
+    
+                    # Anything other than integer we cannot hold
+                    raise LossySetitemError
+                if (
+                    dtype.kind == "u"
+                    and isinstance(element, np.ndarray)
+                    and element.dtype.kind == "i"
+                ):
+                    # see test_where_uint64
+                    casted = element.astype(dtype)
+                    if (casted == element).all():
+                        # TODO: faster to check (element >=0).all()?  potential
+                        #  itemsize issues there?
+                        return casted
+                    raise LossySetitemError
+                if dtype.itemsize < tipo.itemsize:
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype; we can put this into an ndarray
+                    #  losslessly iff it has no NAs
+                    arr = element._values if isinstance(element, ABCSeries) else element
+                    if arr._hasna:
+                        raise LossySetitemError
+                    return element
+    
+                return element
+    
+            raise LossySetitemError
+    
+        if dtype.kind == "f":
+            if lib.is_integer(element) or lib.is_float(element):
+                casted = dtype.type(element)
+                if np.isnan(casted) or casted == element:
+                    return casted
+                # otherwise e.g. overflow see TestCoercionFloat32
+                raise LossySetitemError
+    
+            if tipo is not None:
+                # TODO: itemsize check?
+    
+                if isinstance(tipo, CategoricalDtype):
+                    # GH#56376
+                    if tipo.categories.dtype.kind not in "iuf":
+                        # Anything other than float/integer we cannot hold
+                        raise LossySetitemError
+                    casted = np.asarray(element, dtype=dtype)
+                    if np.array_equal(casted, element, equal_nan=True):
+                        return casted
+                    raise LossySetitemError
+    
+                if tipo.kind not in "iuf":
+                    # Anything other than float/integer we cannot hold
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype or FloatingDtype;
+                    #  we can put this into an ndarray losslessly iff it has no NAs
+                    if element._hasna:
+                        raise LossySetitemError
+                    return element
+                elif tipo.itemsize > dtype.itemsize or tipo.kind != dtype.kind:
+                    if isinstance(element, np.ndarray):
+                        # e.g. TestDataFrameIndexingWhere::test_where_alignment
+                        casted = element.astype(dtype)
+                        if np.array_equal(casted, element, equal_nan=True):
+                            return casted
+                        raise LossySetitemError
+    
+                return element
+    
+>           raise LossySetitemError
+E           pandas.errors.LossySetitemError
+
+.venv\Lib\site-packages\pandas\core\dtypes\cast.py:1792: LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath("C:/Users/Alex's Liar/AppData/Local/Temp/pytest-of-Alex's Liar/pytest-139/test_build_empirical_correlati0")
+
+    def test_build_empirical_correlation_table_from_ledger(tmp_path):
+        from sports_prop_edge.strategy.correlation import (
+            CorrelationCalibrationConfig,
+            build_empirical_correlation_table,
+        )
+    
+        ledger_path = tmp_path / "data" / "pick_results_ledger.csv"
+        rows = []
+        for i, win in enumerate([True, True, False, False, True, True]):
+            rows.append(
+                _parlay_row(
+                    sport="NBA",
+                    m1="points",
+                    m2="assists",
+                    joint_p=0.35,
+                    win=win,
+                    slate_date=f"2026-06-{i + 1:02d}",
+                )
+            )
+        _write_parlay_ledger(ledger_path, rows)
+    
+        cfg = CorrelationCalibrationConfig(window_days=None, min_samples=4, full_weight_samples=40)
+>       table = build_empirical_correlation_table(tmp_path, config=cfg)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_correlation.py:219: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\sports_prop_edge\strategy\correlation.py:256: in build_empirical_correlation_table
+    ledger = load_ledger(root)
+             ^^^^^^^^^^^^^^^^^
+src\sports_prop_edge\strategy\probability_ledger.py:74: in load_ledger
+    return enrich_ledger_probabilities(df[LEDGER_COLUMNS].copy())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\sports_prop_edge\strategy\ledger_probability.py:66: in enrich_ledger_probabilities
+    out.at[idx, "model_probability_source"] = method or "model_probability_raw"
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:2592: in __setitem__
+    return super().__setitem__(key, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:2542: in __setitem__
+    self.obj._set_value(*key, value=value, takeable=self._takeable)
+.venv\Lib\site-packages\pandas\core\frame.py:4922: in _set_value
+    self.loc[index, col] = value
+    ^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:938: in __setitem__
+    iloc._setitem_with_indexer(indexer, value, self.name)
+.venv\Lib\site-packages\pandas\core\indexing.py:1953: in _setitem_with_indexer
+    self._setitem_with_indexer_split_path(indexer, value, name)
+.venv\Lib\site-packages\pandas\core\indexing.py:2044: in _setitem_with_indexer_split_path
+    self._setitem_single_column(loc, value, pi)
+.venv\Lib\site-packages\pandas\core\indexing.py:2181: in _setitem_single_column
+    self.obj._mgr.column_setitem(loc, plane_indexer, value)
+.venv\Lib\site-packages\pandas\core\internals\managers.py:1528: in column_setitem
+    new_mgr = col_mgr.setitem((idx,), value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\managers.py:607: in setitem
+    return self.apply("setitem", indexer=indexer, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\managers.py:445: in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:1118: in setitem
+    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NumpyBlock: 6 dtype: float64, other = 'nan', raise_on_upcast = True
+
+    @final
+    def coerce_to_target_dtype(self, other, raise_on_upcast: bool) -> Block:
+        """
+        coerce the current block to a dtype compat for other
+        we will return a block, possibly object, and not raise
+    
+        we can also safely try to coerce to the same dtype
+        and will receive the same block
+        """
+        new_dtype = find_result_type(self.values.dtype, other)
+        if new_dtype == self.dtype:
+            # GH#52927 avoid RecursionError
+            raise AssertionError(
+                "Something has gone wrong, please report a bug at "
+                "https://github.com/pandas-dev/pandas/issues"
+            )
+    
+        # In a future version of pandas, the default will be that
+        # setting `nan` into an integer series won't raise.
+        if (
+            is_scalar(other)
+            and is_integer_dtype(self.values.dtype)
+            and isna(other)
+            and other is not NaT
+            and not (
+                isinstance(other, (np.datetime64, np.timedelta64)) and np.isnat(other)
+            )
+        ):
+            raise_on_upcast = False
+        elif (
+            isinstance(other, np.ndarray)
+            and other.ndim == 1
+            and is_integer_dtype(self.values.dtype)
+            and is_float_dtype(other.dtype)
+            and lib.has_only_ints_or_nan(other)
+        ):
+            raise_on_upcast = False
+    
+        if raise_on_upcast:
+>           raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
+E           TypeError: Invalid value 'nan' for dtype 'float64'
+
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:468: TypeError
+________ test_pairwise_uses_higher_empirical_weight_with_more_samples _________
+
+self =                         ledger_key  ... notes
+0  NBA-points-assists-2026-06-01-1  ...   NaN
+1  NBA-points-assists-2026... NaN
+2  NBA-points-assists-2026-06-03-0  ...   NaN
+3  NBA-points-assists-2026-06-04-0  ...   NaN
+
+[4 rows x 39 columns]
+index = 0, col = 'model_probability_source', value = 'nan', takeable = False
+
+    def _set_value(
+        self, index: IndexLabel, col, value: Scalar, takeable: bool = False
+    ) -> None:
+        """
+        Put single value at passed column and index.
+    
+        Parameters
+        ----------
+        index : Label
+            row label
+        col : Label
+            column label
+        value : scalar
+        takeable : bool, default False
+            Sets whether or not index/col interpreted as indexers
+        """
+        try:
+            if takeable:
+                icol = col
+                iindex = cast(int, index)
+            else:
+                icol = self.columns.get_loc(col)
+                iindex = self.index.get_loc(index)
+>           self._mgr.column_setitem(icol, iindex, value, inplace_only=True)
+
+.venv\Lib\site-packages\pandas\core\frame.py:4911: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\pandas\core\internals\managers.py:1526: in column_setitem
+    col_mgr.setitem_inplace(idx, value)
+.venv\Lib\site-packages\pandas\core\internals\managers.py:2228: in setitem_inplace
+    value = np_can_hold_element(arr.dtype, value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+dtype = dtype('float64'), element = 'nan'
+
+    def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
+        """
+        Raise if we cannot losslessly set this element into an ndarray with this dtype.
+    
+        Specifically about places where we disagree with numpy.  i.e. there are
+        cases where numpy will raise in doing the setitem that we do not check
+        for here, e.g. setting str "X" into a numeric ndarray.
+    
+        Returns
+        -------
+        Any
+            The element, potentially cast to the dtype.
+    
+        Raises
+        ------
+        ValueError : If we cannot losslessly store this element with this dtype.
+        """
+        if dtype == _dtype_obj:
+            return element
+    
+        tipo = _maybe_infer_dtype_type(element)
+    
+        if dtype.kind in "iu":
+            if isinstance(element, range):
+                if _dtype_can_hold_range(element, dtype):
+                    return element
+                raise LossySetitemError
+    
+            if is_integer(element) or (is_float(element) and element.is_integer()):
+                # e.g. test_setitem_series_int8 if we have a python int 1
+                #  tipo may be np.int32, despite the fact that it will fit
+                #  in smaller int dtypes.
+                info = np.iinfo(dtype)
+                if info.min <= element <= info.max:
+                    return dtype.type(element)
+                raise LossySetitemError
+    
+            if tipo is not None:
+                if tipo.kind not in "iu":
+                    if isinstance(element, np.ndarray) and element.dtype.kind == "f":
+                        # If all can be losslessly cast to integers, then we can hold them
+                        with np.errstate(invalid="ignore"):
+                            # We check afterwards if cast was losslessly, so no need to show
+                            # the warning
+                            casted = element.astype(dtype)
+                        comp = casted == element
+                        if comp.all():
+                            # Return the casted values bc they can be passed to
+                            #  np.putmask, whereas the raw values cannot.
+                            #  see TestSetitemFloatNDarrayIntoIntegerSeries
+                            return casted
+                        raise LossySetitemError
+    
+                    elif isinstance(element, ABCExtensionArray) and isinstance(
+                        element.dtype, CategoricalDtype
+                    ):
+                        # GH#52927 setting Categorical value into non-EA frame
+                        # TODO: general-case for EAs?
+                        try:
+                            casted = element.astype(dtype)
+                        except (ValueError, TypeError) as err:
+                            raise LossySetitemError from err
+                        # Check for cases of either
+                        #  a) lossy overflow/rounding or
+                        #  b) semantic changes like dt64->int64
+                        comp = casted == element
+                        if not comp.all():
+                            raise LossySetitemError
+                        return casted
+    
+                    # Anything other than integer we cannot hold
+                    raise LossySetitemError
+                if (
+                    dtype.kind == "u"
+                    and isinstance(element, np.ndarray)
+                    and element.dtype.kind == "i"
+                ):
+                    # see test_where_uint64
+                    casted = element.astype(dtype)
+                    if (casted == element).all():
+                        # TODO: faster to check (element >=0).all()?  potential
+                        #  itemsize issues there?
+                        return casted
+                    raise LossySetitemError
+                if dtype.itemsize < tipo.itemsize:
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype; we can put this into an ndarray
+                    #  losslessly iff it has no NAs
+                    arr = element._values if isinstance(element, ABCSeries) else element
+                    if arr._hasna:
+                        raise LossySetitemError
+                    return element
+    
+                return element
+    
+            raise LossySetitemError
+    
+        if dtype.kind == "f":
+            if lib.is_integer(element) or lib.is_float(element):
+                casted = dtype.type(element)
+                if np.isnan(casted) or casted == element:
+                    return casted
+                # otherwise e.g. overflow see TestCoercionFloat32
+                raise LossySetitemError
+    
+            if tipo is not None:
+                # TODO: itemsize check?
+    
+                if isinstance(tipo, CategoricalDtype):
+                    # GH#56376
+                    if tipo.categories.dtype.kind not in "iuf":
+                        # Anything other than float/integer we cannot hold
+                        raise LossySetitemError
+                    casted = np.asarray(element, dtype=dtype)
+                    if np.array_equal(casted, element, equal_nan=True):
+                        return casted
+                    raise LossySetitemError
+    
+                if tipo.kind not in "iuf":
+                    # Anything other than float/integer we cannot hold
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype or FloatingDtype;
+                    #  we can put this into an ndarray losslessly iff it has no NAs
+                    if element._hasna:
+                        raise LossySetitemError
+                    return element
+                elif tipo.itemsize > dtype.itemsize or tipo.kind != dtype.kind:
+                    if isinstance(element, np.ndarray):
+                        # e.g. TestDataFrameIndexingWhere::test_where_alignment
+                        casted = element.astype(dtype)
+                        if np.array_equal(casted, element, equal_nan=True):
+                            return casted
+                        raise LossySetitemError
+    
+                return element
+    
+>           raise LossySetitemError
+E           pandas.errors.LossySetitemError
+
+.venv\Lib\site-packages\pandas\core\dtypes\cast.py:1792: LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+self = NumpyBlock: 4 dtype: float64, indexer = (0,), value = 'nan'
+
+    def setitem(self, indexer, value) -> Block:
+        """
+        Attempt self.values[indexer] = value, possibly creating a new array.
+    
+        Parameters
+        ----------
+        indexer : tuple, list-like, array-like, slice, int
+            The subset of self.values to set
+        value : object
+            The value being set
+    
+        Returns
+        -------
+        Block
+    
+        Notes
+        -----
+        `indexer` is a direct slice/positional indexer. `value` must
+        be a compatible shape.
+        """
+    
+        value = self._standardize_fill_value(value)
+    
+        values = cast(np.ndarray, self.values)
+        if self.ndim == 2:
+            values = values.T
+    
+        # length checking
+        check_setitem_lengths(indexer, value, values)
+    
+        if self.dtype != _dtype_obj:
+            # GH48933: extract_array would convert a pd.Series value to np.ndarray
+            value = extract_array(value, extract_numpy=True)
+        try:
+>           casted = np_can_hold_element(values.dtype, value)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:1115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+dtype = dtype('float64'), element = 'nan'
+
+    def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
+        """
+        Raise if we cannot losslessly set this element into an ndarray with this dtype.
+    
+        Specifically about places where we disagree with numpy.  i.e. there are
+        cases where numpy will raise in doing the setitem that we do not check
+        for here, e.g. setting str "X" into a numeric ndarray.
+    
+        Returns
+        -------
+        Any
+            The element, potentially cast to the dtype.
+    
+        Raises
+        ------
+        ValueError : If we cannot losslessly store this element with this dtype.
+        """
+        if dtype == _dtype_obj:
+            return element
+    
+        tipo = _maybe_infer_dtype_type(element)
+    
+        if dtype.kind in "iu":
+            if isinstance(element, range):
+                if _dtype_can_hold_range(element, dtype):
+                    return element
+                raise LossySetitemError
+    
+            if is_integer(element) or (is_float(element) and element.is_integer()):
+                # e.g. test_setitem_series_int8 if we have a python int 1
+                #  tipo may be np.int32, despite the fact that it will fit
+                #  in smaller int dtypes.
+                info = np.iinfo(dtype)
+                if info.min <= element <= info.max:
+                    return dtype.type(element)
+                raise LossySetitemError
+    
+            if tipo is not None:
+                if tipo.kind not in "iu":
+                    if isinstance(element, np.ndarray) and element.dtype.kind == "f":
+                        # If all can be losslessly cast to integers, then we can hold them
+                        with np.errstate(invalid="ignore"):
+                            # We check afterwards if cast was losslessly, so no need to show
+                            # the warning
+                            casted = element.astype(dtype)
+                        comp = casted == element
+                        if comp.all():
+                            # Return the casted values bc they can be passed to
+                            #  np.putmask, whereas the raw values cannot.
+                            #  see TestSetitemFloatNDarrayIntoIntegerSeries
+                            return casted
+                        raise LossySetitemError
+    
+                    elif isinstance(element, ABCExtensionArray) and isinstance(
+                        element.dtype, CategoricalDtype
+                    ):
+                        # GH#52927 setting Categorical value into non-EA frame
+                        # TODO: general-case for EAs?
+                        try:
+                            casted = element.astype(dtype)
+                        except (ValueError, TypeError) as err:
+                            raise LossySetitemError from err
+                        # Check for cases of either
+                        #  a) lossy overflow/rounding or
+                        #  b) semantic changes like dt64->int64
+                        comp = casted == element
+                        if not comp.all():
+                            raise LossySetitemError
+                        return casted
+    
+                    # Anything other than integer we cannot hold
+                    raise LossySetitemError
+                if (
+                    dtype.kind == "u"
+                    and isinstance(element, np.ndarray)
+                    and element.dtype.kind == "i"
+                ):
+                    # see test_where_uint64
+                    casted = element.astype(dtype)
+                    if (casted == element).all():
+                        # TODO: faster to check (element >=0).all()?  potential
+                        #  itemsize issues there?
+                        return casted
+                    raise LossySetitemError
+                if dtype.itemsize < tipo.itemsize:
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype; we can put this into an ndarray
+                    #  losslessly iff it has no NAs
+                    arr = element._values if isinstance(element, ABCSeries) else element
+                    if arr._hasna:
+                        raise LossySetitemError
+                    return element
+    
+                return element
+    
+            raise LossySetitemError
+    
+        if dtype.kind == "f":
+            if lib.is_integer(element) or lib.is_float(element):
+                casted = dtype.type(element)
+                if np.isnan(casted) or casted == element:
+                    return casted
+                # otherwise e.g. overflow see TestCoercionFloat32
+                raise LossySetitemError
+    
+            if tipo is not None:
+                # TODO: itemsize check?
+    
+                if isinstance(tipo, CategoricalDtype):
+                    # GH#56376
+                    if tipo.categories.dtype.kind not in "iuf":
+                        # Anything other than float/integer we cannot hold
+                        raise LossySetitemError
+                    casted = np.asarray(element, dtype=dtype)
+                    if np.array_equal(casted, element, equal_nan=True):
+                        return casted
+                    raise LossySetitemError
+    
+                if tipo.kind not in "iuf":
+                    # Anything other than float/integer we cannot hold
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype or FloatingDtype;
+                    #  we can put this into an ndarray losslessly iff it has no NAs
+                    if element._hasna:
+                        raise LossySetitemError
+                    return element
+                elif tipo.itemsize > dtype.itemsize or tipo.kind != dtype.kind:
+                    if isinstance(element, np.ndarray):
+                        # e.g. TestDataFrameIndexingWhere::test_where_alignment
+                        casted = element.astype(dtype)
+                        if np.array_equal(casted, element, equal_nan=True):
+                            return casted
+                        raise LossySetitemError
+    
+                return element
+    
+>           raise LossySetitemError
+E           pandas.errors.LossySetitemError
+
+.venv\Lib\site-packages\pandas\core\dtypes\cast.py:1792: LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath("C:/Users/Alex's Liar/AppData/Local/Temp/pytest-of-Alex's Liar/pytest-139/test_pairwise_uses_higher_empi0")
+
+    def test_pairwise_uses_higher_empirical_weight_with_more_samples(tmp_path):
+        from sports_prop_edge.strategy.correlation import (
+            CorrelationCalibrationConfig,
+            build_empirical_correlation_table,
+            structural_pair_correlation_factor,
+        )
+    
+        a = _leg(player="a", market="points")
+        b = _leg(player="b", market="assists", team="nyk", opponent="bos")
+    
+        structural = structural_pair_correlation_factor(a, b)
+    
+        ledger_path = tmp_path / "data" / "pick_results_ledger.csv"
+        rows = [
+            _parlay_row(sport="NBA", m1="points", m2="assists", joint_p=0.30, win=True, slate_date="2026-06-01"),
+            _parlay_row(sport="NBA", m1="points", m2="assists", joint_p=0.30, win=False, slate_date="2026-06-02"),
+            _parlay_row(sport="NBA", m1="points", m2="assists", joint_p=0.30, win=False, slate_date="2026-06-03"),
+            _parlay_row(sport="NBA", m1="points", m2="assists", joint_p=0.30, win=False, slate_date="2026-06-04"),
+        ]
+        _write_parlay_ledger(ledger_path, rows)
+        small_cfg = CorrelationCalibrationConfig(window_days=None, min_samples=4, full_weight_samples=40)
+>       small_table = build_empirical_correlation_table(tmp_path, config=small_cfg)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_correlation.py:251: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\sports_prop_edge\strategy\correlation.py:256: in build_empirical_correlation_table
+    ledger = load_ledger(root)
+             ^^^^^^^^^^^^^^^^^
+src\sports_prop_edge\strategy\probability_ledger.py:74: in load_ledger
+    return enrich_ledger_probabilities(df[LEDGER_COLUMNS].copy())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\sports_prop_edge\strategy\ledger_probability.py:66: in enrich_ledger_probabilities
+    out.at[idx, "model_probability_source"] = method or "model_probability_raw"
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:2592: in __setitem__
+    return super().__setitem__(key, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:2542: in __setitem__
+    self.obj._set_value(*key, value=value, takeable=self._takeable)
+.venv\Lib\site-packages\pandas\core\frame.py:4922: in _set_value
+    self.loc[index, col] = value
+    ^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:938: in __setitem__
+    iloc._setitem_with_indexer(indexer, value, self.name)
+.venv\Lib\site-packages\pandas\core\indexing.py:1953: in _setitem_with_indexer
+    self._setitem_with_indexer_split_path(indexer, value, name)
+.venv\Lib\site-packages\pandas\core\indexing.py:2044: in _setitem_with_indexer_split_path
+    self._setitem_single_column(loc, value, pi)
+.venv\Lib\site-packages\pandas\core\indexing.py:2181: in _setitem_single_column
+    self.obj._mgr.column_setitem(loc, plane_indexer, value)
+.venv\Lib\site-packages\pandas\core\internals\managers.py:1528: in column_setitem
+    new_mgr = col_mgr.setitem((idx,), value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\managers.py:607: in setitem
+    return self.apply("setitem", indexer=indexer, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\managers.py:445: in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:1118: in setitem
+    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NumpyBlock: 4 dtype: float64, other = 'nan', raise_on_upcast = True
+
+    @final
+    def coerce_to_target_dtype(self, other, raise_on_upcast: bool) -> Block:
+        """
+        coerce the current block to a dtype compat for other
+        we will return a block, possibly object, and not raise
+    
+        we can also safely try to coerce to the same dtype
+        and will receive the same block
+        """
+        new_dtype = find_result_type(self.values.dtype, other)
+        if new_dtype == self.dtype:
+            # GH#52927 avoid RecursionError
+            raise AssertionError(
+                "Something has gone wrong, please report a bug at "
+                "https://github.com/pandas-dev/pandas/issues"
+            )
+    
+        # In a future version of pandas, the default will be that
+        # setting `nan` into an integer series won't raise.
+        if (
+            is_scalar(other)
+            and is_integer_dtype(self.values.dtype)
+            and isna(other)
+            and other is not NaT
+            and not (
+                isinstance(other, (np.datetime64, np.timedelta64)) and np.isnat(other)
+            )
+        ):
+            raise_on_upcast = False
+        elif (
+            isinstance(other, np.ndarray)
+            and other.ndim == 1
+            and is_integer_dtype(self.values.dtype)
+            and is_float_dtype(other.dtype)
+            and lib.has_only_ints_or_nan(other)
+        ):
+            raise_on_upcast = False
+    
+        if raise_on_upcast:
+>           raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
+E           TypeError: Invalid value 'nan' for dtype 'float64'
+
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:468: TypeError
+__________________ test_rolling_window_excludes_old_parlays ___________________
+
+self =                          ledger_key  ... notes
+0  NBA-points-rebounds-2020-01-01-1  ...   NaN
+1  NBA-points-rebounds-2...aN
+2  NBA-points-rebounds-2020-01-03-0  ...   NaN
+3  NBA-points-rebounds-2020-01-04-0  ...   NaN
+
+[4 rows x 39 columns]
+index = 0, col = 'model_probability_source', value = 'nan', takeable = False
+
+    def _set_value(
+        self, index: IndexLabel, col, value: Scalar, takeable: bool = False
+    ) -> None:
+        """
+        Put single value at passed column and index.
+    
+        Parameters
+        ----------
+        index : Label
+            row label
+        col : Label
+            column label
+        value : scalar
+        takeable : bool, default False
+            Sets whether or not index/col interpreted as indexers
+        """
+        try:
+            if takeable:
+                icol = col
+                iindex = cast(int, index)
+            else:
+                icol = self.columns.get_loc(col)
+                iindex = self.index.get_loc(index)
+>           self._mgr.column_setitem(icol, iindex, value, inplace_only=True)
+
+.venv\Lib\site-packages\pandas\core\frame.py:4911: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\pandas\core\internals\managers.py:1526: in column_setitem
+    col_mgr.setitem_inplace(idx, value)
+.venv\Lib\site-packages\pandas\core\internals\managers.py:2228: in setitem_inplace
+    value = np_can_hold_element(arr.dtype, value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+dtype = dtype('float64'), element = 'nan'
+
+    def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
+        """
+        Raise if we cannot losslessly set this element into an ndarray with this dtype.
+    
+        Specifically about places where we disagree with numpy.  i.e. there are
+        cases where numpy will raise in doing the setitem that we do not check
+        for here, e.g. setting str "X" into a numeric ndarray.
+    
+        Returns
+        -------
+        Any
+            The element, potentially cast to the dtype.
+    
+        Raises
+        ------
+        ValueError : If we cannot losslessly store this element with this dtype.
+        """
+        if dtype == _dtype_obj:
+            return element
+    
+        tipo = _maybe_infer_dtype_type(element)
+    
+        if dtype.kind in "iu":
+            if isinstance(element, range):
+                if _dtype_can_hold_range(element, dtype):
+                    return element
+                raise LossySetitemError
+    
+            if is_integer(element) or (is_float(element) and element.is_integer()):
+                # e.g. test_setitem_series_int8 if we have a python int 1
+                #  tipo may be np.int32, despite the fact that it will fit
+                #  in smaller int dtypes.
+                info = np.iinfo(dtype)
+                if info.min <= element <= info.max:
+                    return dtype.type(element)
+                raise LossySetitemError
+    
+            if tipo is not None:
+                if tipo.kind not in "iu":
+                    if isinstance(element, np.ndarray) and element.dtype.kind == "f":
+                        # If all can be losslessly cast to integers, then we can hold them
+                        with np.errstate(invalid="ignore"):
+                            # We check afterwards if cast was losslessly, so no need to show
+                            # the warning
+                            casted = element.astype(dtype)
+                        comp = casted == element
+                        if comp.all():
+                            # Return the casted values bc they can be passed to
+                            #  np.putmask, whereas the raw values cannot.
+                            #  see TestSetitemFloatNDarrayIntoIntegerSeries
+                            return casted
+                        raise LossySetitemError
+    
+                    elif isinstance(element, ABCExtensionArray) and isinstance(
+                        element.dtype, CategoricalDtype
+                    ):
+                        # GH#52927 setting Categorical value into non-EA frame
+                        # TODO: general-case for EAs?
+                        try:
+                            casted = element.astype(dtype)
+                        except (ValueError, TypeError) as err:
+                            raise LossySetitemError from err
+                        # Check for cases of either
+                        #  a) lossy overflow/rounding or
+                        #  b) semantic changes like dt64->int64
+                        comp = casted == element
+                        if not comp.all():
+                            raise LossySetitemError
+                        return casted
+    
+                    # Anything other than integer we cannot hold
+                    raise LossySetitemError
+                if (
+                    dtype.kind == "u"
+                    and isinstance(element, np.ndarray)
+                    and element.dtype.kind == "i"
+                ):
+                    # see test_where_uint64
+                    casted = element.astype(dtype)
+                    if (casted == element).all():
+                        # TODO: faster to check (element >=0).all()?  potential
+                        #  itemsize issues there?
+                        return casted
+                    raise LossySetitemError
+                if dtype.itemsize < tipo.itemsize:
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype; we can put this into an ndarray
+                    #  losslessly iff it has no NAs
+                    arr = element._values if isinstance(element, ABCSeries) else element
+                    if arr._hasna:
+                        raise LossySetitemError
+                    return element
+    
+                return element
+    
+            raise LossySetitemError
+    
+        if dtype.kind == "f":
+            if lib.is_integer(element) or lib.is_float(element):
+                casted = dtype.type(element)
+                if np.isnan(casted) or casted == element:
+                    return casted
+                # otherwise e.g. overflow see TestCoercionFloat32
+                raise LossySetitemError
+    
+            if tipo is not None:
+                # TODO: itemsize check?
+    
+                if isinstance(tipo, CategoricalDtype):
+                    # GH#56376
+                    if tipo.categories.dtype.kind not in "iuf":
+                        # Anything other than float/integer we cannot hold
+                        raise LossySetitemError
+                    casted = np.asarray(element, dtype=dtype)
+                    if np.array_equal(casted, element, equal_nan=True):
+                        return casted
+                    raise LossySetitemError
+    
+                if tipo.kind not in "iuf":
+                    # Anything other than float/integer we cannot hold
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype or FloatingDtype;
+                    #  we can put this into an ndarray losslessly iff it has no NAs
+                    if element._hasna:
+                        raise LossySetitemError
+                    return element
+                elif tipo.itemsize > dtype.itemsize or tipo.kind != dtype.kind:
+                    if isinstance(element, np.ndarray):
+                        # e.g. TestDataFrameIndexingWhere::test_where_alignment
+                        casted = element.astype(dtype)
+                        if np.array_equal(casted, element, equal_nan=True):
+                            return casted
+                        raise LossySetitemError
+    
+                return element
+    
+>           raise LossySetitemError
+E           pandas.errors.LossySetitemError
+
+.venv\Lib\site-packages\pandas\core\dtypes\cast.py:1792: LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+self = NumpyBlock: 4 dtype: float64, indexer = (0,), value = 'nan'
+
+    def setitem(self, indexer, value) -> Block:
+        """
+        Attempt self.values[indexer] = value, possibly creating a new array.
+    
+        Parameters
+        ----------
+        indexer : tuple, list-like, array-like, slice, int
+            The subset of self.values to set
+        value : object
+            The value being set
+    
+        Returns
+        -------
+        Block
+    
+        Notes
+        -----
+        `indexer` is a direct slice/positional indexer. `value` must
+        be a compatible shape.
+        """
+    
+        value = self._standardize_fill_value(value)
+    
+        values = cast(np.ndarray, self.values)
+        if self.ndim == 2:
+            values = values.T
+    
+        # length checking
+        check_setitem_lengths(indexer, value, values)
+    
+        if self.dtype != _dtype_obj:
+            # GH48933: extract_array would convert a pd.Series value to np.ndarray
+            value = extract_array(value, extract_numpy=True)
+        try:
+>           casted = np_can_hold_element(values.dtype, value)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:1115: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+dtype = dtype('float64'), element = 'nan'
+
+    def np_can_hold_element(dtype: np.dtype, element: Any) -> Any:
+        """
+        Raise if we cannot losslessly set this element into an ndarray with this dtype.
+    
+        Specifically about places where we disagree with numpy.  i.e. there are
+        cases where numpy will raise in doing the setitem that we do not check
+        for here, e.g. setting str "X" into a numeric ndarray.
+    
+        Returns
+        -------
+        Any
+            The element, potentially cast to the dtype.
+    
+        Raises
+        ------
+        ValueError : If we cannot losslessly store this element with this dtype.
+        """
+        if dtype == _dtype_obj:
+            return element
+    
+        tipo = _maybe_infer_dtype_type(element)
+    
+        if dtype.kind in "iu":
+            if isinstance(element, range):
+                if _dtype_can_hold_range(element, dtype):
+                    return element
+                raise LossySetitemError
+    
+            if is_integer(element) or (is_float(element) and element.is_integer()):
+                # e.g. test_setitem_series_int8 if we have a python int 1
+                #  tipo may be np.int32, despite the fact that it will fit
+                #  in smaller int dtypes.
+                info = np.iinfo(dtype)
+                if info.min <= element <= info.max:
+                    return dtype.type(element)
+                raise LossySetitemError
+    
+            if tipo is not None:
+                if tipo.kind not in "iu":
+                    if isinstance(element, np.ndarray) and element.dtype.kind == "f":
+                        # If all can be losslessly cast to integers, then we can hold them
+                        with np.errstate(invalid="ignore"):
+                            # We check afterwards if cast was losslessly, so no need to show
+                            # the warning
+                            casted = element.astype(dtype)
+                        comp = casted == element
+                        if comp.all():
+                            # Return the casted values bc they can be passed to
+                            #  np.putmask, whereas the raw values cannot.
+                            #  see TestSetitemFloatNDarrayIntoIntegerSeries
+                            return casted
+                        raise LossySetitemError
+    
+                    elif isinstance(element, ABCExtensionArray) and isinstance(
+                        element.dtype, CategoricalDtype
+                    ):
+                        # GH#52927 setting Categorical value into non-EA frame
+                        # TODO: general-case for EAs?
+                        try:
+                            casted = element.astype(dtype)
+                        except (ValueError, TypeError) as err:
+                            raise LossySetitemError from err
+                        # Check for cases of either
+                        #  a) lossy overflow/rounding or
+                        #  b) semantic changes like dt64->int64
+                        comp = casted == element
+                        if not comp.all():
+                            raise LossySetitemError
+                        return casted
+    
+                    # Anything other than integer we cannot hold
+                    raise LossySetitemError
+                if (
+                    dtype.kind == "u"
+                    and isinstance(element, np.ndarray)
+                    and element.dtype.kind == "i"
+                ):
+                    # see test_where_uint64
+                    casted = element.astype(dtype)
+                    if (casted == element).all():
+                        # TODO: faster to check (element >=0).all()?  potential
+                        #  itemsize issues there?
+                        return casted
+                    raise LossySetitemError
+                if dtype.itemsize < tipo.itemsize:
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype; we can put this into an ndarray
+                    #  losslessly iff it has no NAs
+                    arr = element._values if isinstance(element, ABCSeries) else element
+                    if arr._hasna:
+                        raise LossySetitemError
+                    return element
+    
+                return element
+    
+            raise LossySetitemError
+    
+        if dtype.kind == "f":
+            if lib.is_integer(element) or lib.is_float(element):
+                casted = dtype.type(element)
+                if np.isnan(casted) or casted == element:
+                    return casted
+                # otherwise e.g. overflow see TestCoercionFloat32
+                raise LossySetitemError
+    
+            if tipo is not None:
+                # TODO: itemsize check?
+    
+                if isinstance(tipo, CategoricalDtype):
+                    # GH#56376
+                    if tipo.categories.dtype.kind not in "iuf":
+                        # Anything other than float/integer we cannot hold
+                        raise LossySetitemError
+                    casted = np.asarray(element, dtype=dtype)
+                    if np.array_equal(casted, element, equal_nan=True):
+                        return casted
+                    raise LossySetitemError
+    
+                if tipo.kind not in "iuf":
+                    # Anything other than float/integer we cannot hold
+                    raise LossySetitemError
+                if not isinstance(tipo, np.dtype):
+                    # i.e. nullable IntegerDtype or FloatingDtype;
+                    #  we can put this into an ndarray losslessly iff it has no NAs
+                    if element._hasna:
+                        raise LossySetitemError
+                    return element
+                elif tipo.itemsize > dtype.itemsize or tipo.kind != dtype.kind:
+                    if isinstance(element, np.ndarray):
+                        # e.g. TestDataFrameIndexingWhere::test_where_alignment
+                        casted = element.astype(dtype)
+                        if np.array_equal(casted, element, equal_nan=True):
+                            return casted
+                        raise LossySetitemError
+    
+                return element
+    
+>           raise LossySetitemError
+E           pandas.errors.LossySetitemError
+
+.venv\Lib\site-packages\pandas\core\dtypes\cast.py:1792: LossySetitemError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath("C:/Users/Alex's Liar/AppData/Local/Temp/pytest-of-Alex's Liar/pytest-139/test_rolling_window_excludes_o0")
+
+    def test_rolling_window_excludes_old_parlays(tmp_path):
+        from sports_prop_edge.strategy.correlation import CorrelationCalibrationConfig, build_empirical_correlation_table
+    
+        ledger_path = tmp_path / "data" / "pick_results_ledger.csv"
+        rows = [
+            _parlay_row(sport="NBA", m1="points", m2="rebounds", joint_p=0.32, win=True, slate_date="2020-01-01"),
+            _parlay_row(sport="NBA", m1="points", m2="rebounds", joint_p=0.32, win=True, slate_date="2020-01-02"),
+            _parlay_row(sport="NBA", m1="points", m2="rebounds", joint_p=0.32, win=False, slate_date="2020-01-03"),
+            _parlay_row(sport="NBA", m1="points", m2="rebounds", joint_p=0.32, win=False, slate_date="2020-01-04"),
+        ]
+        _write_parlay_ledger(ledger_path, rows)
+        cfg = CorrelationCalibrationConfig(window_days=30, min_samples=4)
+>       assert build_empirical_correlation_table(tmp_path, config=cfg) == {}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_correlation.py:279: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\sports_prop_edge\strategy\correlation.py:256: in build_empirical_correlation_table
+    ledger = load_ledger(root)
+             ^^^^^^^^^^^^^^^^^
+src\sports_prop_edge\strategy\probability_ledger.py:74: in load_ledger
+    return enrich_ledger_probabilities(df[LEDGER_COLUMNS].copy())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src\sports_prop_edge\strategy\ledger_probability.py:66: in enrich_ledger_probabilities
+    out.at[idx, "model_probability_source"] = method or "model_probability_raw"
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:2592: in __setitem__
+    return super().__setitem__(key, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:2542: in __setitem__
+    self.obj._set_value(*key, value=value, takeable=self._takeable)
+.venv\Lib\site-packages\pandas\core\frame.py:4922: in _set_value
+    self.loc[index, col] = value
+    ^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\indexing.py:938: in __setitem__
+    iloc._setitem_with_indexer(indexer, value, self.name)
+.venv\Lib\site-packages\pandas\core\indexing.py:1953: in _setitem_with_indexer
+    self._setitem_with_indexer_split_path(indexer, value, name)
+.venv\Lib\site-packages\pandas\core\indexing.py:2044: in _setitem_with_indexer_split_path
+    self._setitem_single_column(loc, value, pi)
+.venv\Lib\site-packages\pandas\core\indexing.py:2181: in _setitem_single_column
+    self.obj._mgr.column_setitem(loc, plane_indexer, value)
+.venv\Lib\site-packages\pandas\core\internals\managers.py:1528: in column_setitem
+    new_mgr = col_mgr.setitem((idx,), value)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\managers.py:607: in setitem
+    return self.apply("setitem", indexer=indexer, value=value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\managers.py:445: in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:1118: in setitem
+    nb = self.coerce_to_target_dtype(value, raise_on_upcast=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = NumpyBlock: 4 dtype: float64, other = 'nan', raise_on_upcast = True
+
+    @final
+    def coerce_to_target_dtype(self, other, raise_on_upcast: bool) -> Block:
+        """
+        coerce the current block to a dtype compat for other
+        we will return a block, possibly object, and not raise
+    
+        we can also safely try to coerce to the same dtype
+        and will receive the same block
+        """
+        new_dtype = find_result_type(self.values.dtype, other)
+        if new_dtype == self.dtype:
+            # GH#52927 avoid RecursionError
+            raise AssertionError(
+                "Something has gone wrong, please report a bug at "
+                "https://github.com/pandas-dev/pandas/issues"
+            )
+    
+        # In a future version of pandas, the default will be that
+        # setting `nan` into an integer series won't raise.
+        if (
+            is_scalar(other)
+            and is_integer_dtype(self.values.dtype)
+            and isna(other)
+            and other is not NaT
+            and not (
+                isinstance(other, (np.datetime64, np.timedelta64)) and np.isnat(other)
+            )
+        ):
+            raise_on_upcast = False
+        elif (
+            isinstance(other, np.ndarray)
+            and other.ndim == 1
+            and is_integer_dtype(self.values.dtype)
+            and is_float_dtype(other.dtype)
+            and lib.has_only_ints_or_nan(other)
+        ):
+            raise_on_upcast = False
+    
+        if raise_on_upcast:
+>           raise TypeError(f"Invalid value '{other}' for dtype '{self.values.dtype}'")
+E           TypeError: Invalid value 'nan' for dtype 'float64'
+
+.venv\Lib\site-packages\pandas\core\internals\blocks.py:468: TypeError
+_________________________ test_sgp_pairs_same_matchup _________________________
+
+    def test_sgp_pairs_same_matchup():
+        base = {
+            "game_title": "KBO",
+            "event_time": "2026-06-10",
+            "team": "kiwoom",
+            "opponent": "lg twins",
+            "confidence": "A",
+            "events_used": 20,
+            "recommendation": "PLAY",
+            "quality_score": 10,
+            "dfs_edge": 0.05,
+            "model_probability": 0.62,
+        }
+        rows = [
+            {**base, "player": "lee jung-hoo", "market": "hits", "line": 1.5, "side": "over"},
+            {
+                **base,
+                "player": "foreign ace",
+                "market": "pitcher_strikeouts",
+                "line": 5.5,
+                "side": "over",
+            },
+        ]
+        tiered = assign_pick_tiers(pd.DataFrame(rows))
+        pairs = build_sgp_pairs(tiered, min_tier="PLAYABLE", min_probability=0.50, min_edge=0.02)
+>       assert not pairs.empty
+E       assert not True
+E        +  where True = Empty DataFrame\nColumns: []\nIndex: [].empty
+
+C:\Users\ALEX'S~1\Desktop\sports_prop_edge\tests\test_pick_workflow.py:98: AssertionError
+______________ test_sgp_pairs_require_cross_team_for_basketball _______________
+
+    def test_sgp_pairs_require_cross_team_for_basketball():
+        pairs = build_sgp_pairs(_basketball_sgp_sample(), min_tier="PLAYABLE", min_probability=0.50, min_edge=0.0)
+        assert not pairs.empty
+        assert not pairs["same_team"].any()
+>       assert {"home star", "away star"}.issubset({pairs.iloc[0]["leg1_player"], pairs.iloc[0]["leg2_player"]})
+E       AssertionError: assert False
+E        +  where False = <built-in method issubset of set object at 0x000001E40E6E35A0>({'away star', 'home role'})
+E        +    where <built-in method issubset of set object at 0x000001E40E6E35A0> = {'away star', 'home star'}.issubset
+
+C:\Users\ALEX'S~1\Desktop\sports_prop_edge\tests\test_pick_workflow.py:132: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_correlation.py::test_build_empirical_correlation_table_from_ledger
+FAILED tests/test_correlation.py::test_pairwise_uses_higher_empirical_weight_with_more_samples
+FAILED tests/test_correlation.py::test_rolling_window_excludes_old_parlays - ...
+FAILED tests/test_pick_workflow.py::test_sgp_pairs_same_matchup - assert not ...
+FAILED tests/test_pick_workflow.py::test_sgp_pairs_require_cross_team_for_basketball
+5 failed, 15 passed, 9 deselected in 2.45s

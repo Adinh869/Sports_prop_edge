@@ -1,0 +1,9 @@
+site,game_title,event_time,player,team,opponent,market,line,side,expected_minutes,expected_plate_appearances,expected_games,opponent_adjustment,pace_adjustment,home_adjustment,actual_result
+PrizeStyle Demo,NBA,2026-06-09 19:30,Jaylen Brown,boston celtics,new york knicks,points,24.5,over,34,1,1,1.02,1.01,1.00,27
+PrizeStyle Demo,NBA,2026-06-09 19:30,Karl-Anthony Towns,new york knicks,boston celtics,rebounds,10.5,under,33,1,1,0.98,1.00,1.00,9
+PrizeStyle Demo,NBA,2026-06-09 22:00,Anthony Davis,los angeles lakers,dallas mavericks,pra,38.5,over,35,1,1,1.03,1.02,1.00,42
+PrizeStyle Demo,KBO,2026-06-10 18:00,Lee Jung-hoo,kiwoom heroes,lg twins,hits,1.5,over,1,4.2,1,1.04,1.00,1.00,2
+PrizeStyle Demo,KBO,2026-06-10 18:00,Choi Jeong-hee,ssg landers,doosan bears,total_bases,1.5,over,1,4.0,1,1.01,1.00,0.98,3
+PrizeStyle Demo,NFL,2026-09-07 13:00,Patrick Mahomes,kansas city chiefs,baltimore ravens,passing_yards,275.5,over,1,1,1,1.02,1.00,1.00,302
+PrizeStyle Demo,NFL,2026-09-07 13:00,Travis Kelce,kansas city chiefs,baltimore ravens,receptions,5.5,over,1,1,1,1.01,1.00,1.00,7
+PrizeStyle Demo,NFL,2026-09-07 16:25,CeeDee Lamb,dallas cowboys,new york giants,receiving_yards,72.5,under,1,1,1,0.97,1.00,0.99,68

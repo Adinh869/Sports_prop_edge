@@ -1,0 +1,443 @@
+site,game_title,event_time,player,team,opponent,market,line,side,stat_type,league,odds_type,projection_id,start_time
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,walbert ureña,laa,ath,hits_allowed,5.5,over,Hits Allowed,MLB,standard,12729676,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,walbert ureña,laa,ath,hits_allowed,5.5,under,Hits Allowed,MLB,standard,12729676,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,j.t. ginn,ath,laa,pitcher_strikeouts,5.0,over,Pitcher Strikeouts,MLB,standard,12727908,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,j.t. ginn,ath,laa,pitcher_strikeouts,5.0,under,Pitcher Strikeouts,MLB,standard,12727908,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,walbert ureña,laa,ath,pitcher_strikeouts,4.0,over,Pitcher Strikeouts,MLB,standard,12729677,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,walbert ureña,laa,ath,pitcher_strikeouts,4.0,under,Pitcher Strikeouts,MLB,standard,12729677,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,henry bolte,ath,laa,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12727901,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,henry bolte,ath,laa,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12727901,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jo adell,laa,ath,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12727921,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jo adell,laa,ath,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12727921,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,nolan schanuel,laa,ath,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12727951,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,nolan schanuel,laa,ath,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12727951,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,shea langeliers,ath,laa,total_bases,1.5,over,Total Bases,MLB,standard,12727964,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,shea langeliers,ath,laa,total_bases,1.5,under,Total Bases,MLB,standard,12727964,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,zach neto,laa,ath,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12727982,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,zach neto,laa,ath,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12727982,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jonah heim,ath,laa,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738765,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jonah heim,ath,laa,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738765,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,tyler soderstrom,ath,laa,runs,0.5,over,Runs,MLB,standard,12727969,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,tyler soderstrom,ath,laa,runs,0.5,under,Runs,MLB,standard,12727969,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,zach neto,laa,ath,runs,0.5,over,Runs,MLB,standard,12727985,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,zach neto,laa,ath,runs,0.5,under,Runs,MLB,standard,12727985,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,denzer guzman,laa,ath,singles,0.5,over,Singles,MLB,standard,12729355,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,denzer guzman,laa,ath,singles,0.5,under,Singles,MLB,standard,12729355,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,henry bolte,ath,laa,singles,0.5,over,Singles,MLB,standard,12729360,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,henry bolte,ath,laa,singles,0.5,under,Singles,MLB,standard,12729360,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,shea langeliers,ath,laa,singles,0.5,over,Singles,MLB,standard,12729464,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,shea langeliers,ath,laa,singles,0.5,under,Singles,MLB,standard,12729464,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,wade meckler,laa,ath,singles,0.5,over,Singles,MLB,standard,12729491,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,wade meckler,laa,ath,singles,0.5,under,Singles,MLB,standard,12729491,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,nolan schanuel,laa,ath,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12729574,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,nolan schanuel,laa,ath,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12729574,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jo adell,laa,ath,singles,0.5,over,Singles,MLB,standard,12730690,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jo adell,laa,ath,singles,0.5,under,Singles,MLB,standard,12730690,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,tyler soderstrom,ath,laa,singles,0.5,over,Singles,MLB,standard,12730692,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,tyler soderstrom,ath,laa,singles,0.5,under,Singles,MLB,standard,12730692,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jonah heim,ath,laa,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12738761,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,jonah heim,ath,laa,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12738761,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,donovan walton,laa,ath,singles,0.5,over,Singles,MLB,standard,12739058,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:05:00.000-04:00,donovan walton,laa,ath,singles,0.5,under,Singles,MLB,standard,12739058,2026-06-20T22:05:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,taj bradley,min,az,pitcher_strikeouts,5.0,over,Pitcher Strikeouts,MLB,standard,12733896,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,taj bradley,min,az,pitcher_strikeouts,5.0,under,Pitcher Strikeouts,MLB,standard,12733896,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,zac gallen,az,min,pitcher_strikeouts,4.0,over,Pitcher Strikeouts,MLB,standard,12723984,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,zac gallen,az,min,pitcher_strikeouts,4.0,under,Pitcher Strikeouts,MLB,standard,12723984,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,taj bradley,min,az,runs_allowed,2.5,over,Earned Runs Allowed,MLB,standard,12728763,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,taj bradley,min,az,runs_allowed,2.5,under,Earned Runs Allowed,MLB,standard,12728763,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,byron buxton,min,az,total_bases,1.5,over,Total Bases,MLB,standard,12723197,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,byron buxton,min,az,total_bases,1.5,under,Total Bases,MLB,standard,12723197,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,trevor larnach,min,az,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12723357,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,trevor larnach,min,az,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12723357,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12724454,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12724454,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,brooks lee,min,az,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12728733,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,brooks lee,min,az,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12728733,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh bell,min,az,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12728745,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh bell,min,az,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12728745,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nolan arenado,az,min,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12728756,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nolan arenado,az,min,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12728756,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,royce lewis,min,az,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12728760,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,royce lewis,min,az,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12728760,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,runs,0.5,over,Runs,MLB,standard,12728740,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,runs,0.5,under,Runs,MLB,standard,12728740,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,walks,0.5,over,Walks,MLB,standard,12728742,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,walks,0.5,under,Walks,MLB,standard,12728742,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,brooks lee,min,az,singles,0.5,over,Singles,MLB,standard,12728796,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,brooks lee,min,az,singles,0.5,under,Singles,MLB,standard,12728796,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,singles,0.5,over,Singles,MLB,standard,12728810,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,geraldo perdomo,az,min,singles,0.5,under,Singles,MLB,standard,12728810,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,jorge barrosa,az,min,total_bases,0.5,over,Total Bases,MLB,standard,12728816,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,jorge barrosa,az,min,total_bases,0.5,under,Total Bases,MLB,standard,12728816,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh bell,min,az,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12728818,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh bell,min,az,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12728818,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh bell,min,az,singles,0.5,over,Singles,MLB,standard,12728820,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh bell,min,az,singles,0.5,under,Singles,MLB,standard,12728820,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,ketel marte,az,min,singles,0.5,over,Singles,MLB,standard,12728823,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,ketel marte,az,min,singles,0.5,under,Singles,MLB,standard,12728823,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,lourdes gurriel jr.,az,min,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12728831,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,lourdes gurriel jr.,az,min,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12728831,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,lourdes gurriel jr.,az,min,singles,0.5,over,Singles,MLB,standard,12728833,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,lourdes gurriel jr.,az,min,singles,0.5,under,Singles,MLB,standard,12728833,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,luke keaschall,min,az,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12728836,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,luke keaschall,min,az,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12728836,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,luke keaschall,min,az,singles,0.5,over,Singles,MLB,standard,12728837,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,luke keaschall,min,az,singles,0.5,under,Singles,MLB,standard,12728837,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nolan arenado,az,min,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12728840,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nolan arenado,az,min,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12728840,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,victor caratini,min,az,singles,0.5,over,Singles,MLB,standard,12728866,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,victor caratini,min,az,singles,0.5,under,Singles,MLB,standard,12728866,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,trevor larnach,min,az,runs,0.5,over,Runs,MLB,standard,12729580,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,trevor larnach,min,az,runs,0.5,under,Runs,MLB,standard,12729580,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,victor caratini,min,az,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12729582,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,victor caratini,min,az,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12729582,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,corbin carroll,az,min,runs,0.5,over,Runs,MLB,standard,12730696,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,corbin carroll,az,min,runs,0.5,under,Runs,MLB,standard,12730696,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,ryan kreidler,min,az,hits,0.5,over,Hits,MLB,standard,12738114,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,ryan kreidler,min,az,hits,0.5,under,Hits,MLB,standard,12738114,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,connelly early,bos,sea,pitcher_strikeouts,6.0,over,Pitcher Strikeouts,MLB,standard,12727295,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,connelly early,bos,sea,pitcher_strikeouts,6.0,under,Pitcher Strikeouts,MLB,standard,12727295,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,emerson hancock,sea,bos,pitcher_strikeouts,5.0,over,Pitcher Strikeouts,MLB,standard,12727397,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,emerson hancock,sea,bos,pitcher_strikeouts,5.0,under,Pitcher Strikeouts,MLB,standard,12727397,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,julio rodríguez,sea,bos,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12729071,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,julio rodríguez,sea,bos,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12729071,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,colt emerson,sea,bos,hits,0.5,over,Hits,MLB,standard,12727294,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,colt emerson,sea,bos,hits,0.5,under,Hits,MLB,standard,12727294,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,caleb durbin,bos,sea,singles,0.5,over,Singles,MLB,standard,12728984,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,caleb durbin,bos,sea,singles,0.5,under,Singles,MLB,standard,12728984,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,julio rodríguez,sea,bos,singles,0.5,over,Singles,MLB,standard,12729076,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,julio rodríguez,sea,bos,singles,0.5,under,Singles,MLB,standard,12729076,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh naylor,sea,bos,singles,0.5,over,Singles,MLB,standard,12729800,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,josh naylor,sea,bos,singles,0.5,under,Singles,MLB,standard,12729800,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,j.p. crawford,sea,bos,singles,0.5,over,Singles,MLB,standard,12736866,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,j.p. crawford,sea,bos,singles,0.5,under,Singles,MLB,standard,12736866,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,connor joe,sea,bos,hits_runs_rbis,0.5,over,Hits+Runs+RBIs,MLB,standard,12738234,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,connor joe,sea,bos,hits_runs_rbis,0.5,under,Hits+Runs+RBIs,MLB,standard,12738234,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,carlos narváez,bos,sea,hits,0.5,over,Hits,MLB,standard,12739094,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,carlos narváez,bos,sea,hits,0.5,under,Hits,MLB,standard,12739094,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,carlos narváez,bos,sea,total_bases,0.5,over,Total Bases,MLB,standard,12739132,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,carlos narváez,bos,sea,total_bases,0.5,under,Total Bases,MLB,standard,12739132,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nate eaton,bos,sea,hits,0.5,over,Hits,MLB,standard,12739136,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nate eaton,bos,sea,hits,0.5,under,Hits,MLB,standard,12739136,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nate eaton,bos,sea,total_bases,0.5,over,Total Bases,MLB,standard,12739146,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,nate eaton,bos,sea,total_bases,0.5,under,Total Bases,MLB,standard,12739146,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,yoshinobu yamamoto,lad,bal,pitcher_strikeouts,7.0,over,Pitcher Strikeouts,MLB,standard,12723524,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,yoshinobu yamamoto,lad,bal,pitcher_strikeouts,7.0,under,Pitcher Strikeouts,MLB,standard,12723524,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,yoshinobu yamamoto,lad,bal,hits_allowed,4.5,over,Hits Allowed,MLB,standard,12727879,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,yoshinobu yamamoto,lad,bal,hits_allowed,4.5,under,Hits Allowed,MLB,standard,12727879,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,trevor rogers,bal,lad,pitcher_strikeouts,4.0,over,Pitcher Strikeouts,MLB,standard,12723519,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,trevor rogers,bal,lad,pitcher_strikeouts,4.0,under,Pitcher Strikeouts,MLB,standard,12723519,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,andy pages,lad,bal,total_bases,1.5,over,Total Bases,MLB,standard,12724230,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,andy pages,lad,bal,total_bases,1.5,under,Total Bases,MLB,standard,12724230,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,miguel rojas,lad,bal,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12727828,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,miguel rojas,lad,bal,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12727828,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,shohei ohtani,lad,bal,total_bases,1.5,over,Total Bases,MLB,standard,12731610,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,shohei ohtani,lad,bal,total_bases,1.5,under,Total Bases,MLB,standard,12731610,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,colton cowser,bal,lad,hits_runs_rbis,0.5,over,Hits+Runs+RBIs,MLB,standard,12721757,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,colton cowser,bal,lad,hits_runs_rbis,0.5,under,Hits+Runs+RBIs,MLB,standard,12721757,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,jackson holliday,bal,lad,hits,0.5,over,Hits,MLB,standard,12721801,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,jackson holliday,bal,lad,hits,0.5,under,Hits,MLB,standard,12721801,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,blaze alexander,bal,lad,hits,0.5,over,Hits,MLB,standard,12723898,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,blaze alexander,bal,lad,hits,0.5,under,Hits,MLB,standard,12723898,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,alex call,lad,bal,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12727763,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,alex call,lad,bal,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12727763,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,andy pages,lad,bal,singles,0.5,over,Singles,MLB,standard,12727771,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,andy pages,lad,bal,singles,0.5,under,Singles,MLB,standard,12727771,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,jackson holliday,bal,lad,total_bases,0.5,over,Total Bases,MLB,standard,12727801,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,jackson holliday,bal,lad,total_bases,0.5,under,Total Bases,MLB,standard,12727801,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,mookie betts,lad,bal,runs,0.5,over,Runs,MLB,standard,12727834,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,mookie betts,lad,bal,runs,0.5,under,Runs,MLB,standard,12727834,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,mookie betts,lad,bal,singles,0.5,over,Singles,MLB,standard,12727835,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,mookie betts,lad,bal,singles,0.5,under,Singles,MLB,standard,12727835,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,tommy edman,lad,bal,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12727851,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,tommy edman,lad,bal,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12727851,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,andy pages,lad,bal,runs,0.5,over,Runs,MLB,standard,12728212,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,andy pages,lad,bal,runs,0.5,under,Runs,MLB,standard,12728212,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,freddie freeman,lad,bal,singles,0.5,over,Singles,MLB,standard,12728213,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,freddie freeman,lad,bal,singles,0.5,under,Singles,MLB,standard,12728213,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,blaze alexander,bal,lad,total_bases,0.5,over,Total Bases,MLB,standard,12729603,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,blaze alexander,bal,lad,total_bases,0.5,under,Total Bases,MLB,standard,12729603,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,miguel rojas,lad,bal,singles,0.5,over,Singles,MLB,standard,12729994,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,miguel rojas,lad,bal,singles,0.5,under,Singles,MLB,standard,12729994,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,shohei ohtani,lad,bal,walks,0.5,over,Walks,MLB,standard,12738747,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,shohei ohtani,lad,bal,walks,0.5,under,Walks,MLB,standard,12738747,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,coby mayo,bal,lad,hits_runs_rbis,0.5,over,Hits+Runs+RBIs,MLB,standard,12738952,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,coby mayo,bal,lad,hits_runs_rbis,0.5,under,Hits+Runs+RBIs,MLB,standard,12738952,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,coby mayo,bal,lad,total_bases,0.5,over,Total Bases,MLB,standard,12738967,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-20T22:10:00.000-04:00,coby mayo,bal,lad,total_bases,0.5,under,Total Bases,MLB,standard,12738967,2026-06-20T22:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,bryce elder,atl,mil,hits_allowed,5.5,over,Hits Allowed,MLB,standard,12739611,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,bryce elder,atl,mil,hits_allowed,5.5,under,Hits Allowed,MLB,standard,12739611,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,robert gasser,mil,atl,hits_allowed,5.5,over,Hits Allowed,MLB,standard,12739837,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,robert gasser,mil,atl,hits_allowed,5.5,under,Hits Allowed,MLB,standard,12739837,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,bryce elder,atl,mil,runs_allowed,2.5,over,Earned Runs Allowed,MLB,standard,12739609,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,bryce elder,atl,mil,runs_allowed,2.5,under,Earned Runs Allowed,MLB,standard,12739609,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,robert gasser,mil,atl,runs_allowed,2.5,over,Earned Runs Allowed,MLB,standard,12739835,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,robert gasser,mil,atl,runs_allowed,2.5,under,Earned Runs Allowed,MLB,standard,12739835,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,austin riley,atl,mil,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12739577,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,austin riley,atl,mil,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12739577,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jackson chourio,mil,atl,total_bases,1.5,over,Total Bases,MLB,standard,12739712,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jackson chourio,mil,atl,total_bases,1.5,under,Total Bases,MLB,standard,12739712,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jake bauers,mil,atl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12739719,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jake bauers,mil,atl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12739719,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,matt olson,atl,mil,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12739774,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,matt olson,atl,mil,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12739774,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal frelick,mil,atl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12739846,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal frelick,mil,atl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12739846,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,brice turang,mil,atl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12739959,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,brice turang,mil,atl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12739959,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,brice turang,mil,atl,singles,0.5,over,Singles,MLB,standard,12739602,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,brice turang,mil,atl,singles,0.5,under,Singles,MLB,standard,12739602,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,christian yelich,mil,atl,runs,0.5,over,Runs,MLB,standard,12739627,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,christian yelich,mil,atl,runs,0.5,under,Runs,MLB,standard,12739627,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,drake baldwin,atl,mil,runs,0.5,over,Runs,MLB,standard,12739661,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,drake baldwin,atl,mil,runs,0.5,under,Runs,MLB,standard,12739661,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,eli white,atl,mil,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12739671,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,eli white,atl,mil,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12739671,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jackson chourio,mil,atl,runs,0.5,over,Runs,MLB,standard,12739708,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jackson chourio,mil,atl,runs,0.5,under,Runs,MLB,standard,12739708,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,matt olson,atl,mil,runs,0.5,over,Runs,MLB,standard,12739781,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,matt olson,atl,mil,runs,0.5,under,Runs,MLB,standard,12739781,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal frelick,mil,atl,singles,0.5,over,Singles,MLB,standard,12739853,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal frelick,mil,atl,singles,0.5,under,Singles,MLB,standard,12739853,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,william contreras,mil,atl,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12739863,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,william contreras,mil,atl,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12739863,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,blake dunn,cin,nyy,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738384,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,blake dunn,cin,nyy,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738384,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,cody bellinger,nyy,cin,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738404,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,cody bellinger,nyy,cin,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738404,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jj bleday,cin,nyy,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738458,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jj bleday,cin,nyy,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738458,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jasson domínguez,nyy,cin,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738477,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jasson domínguez,nyy,cin,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738477,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,nathaniel lowe,cin,nyy,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738525,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,nathaniel lowe,cin,nyy,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738525,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,paul goldschmidt,nyy,cin,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738541,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,paul goldschmidt,nyy,cin,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738541,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal stewart,cin,nyy,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12738572,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal stewart,cin,nyy,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12738572,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,austin wells,nyy,cin,hits,0.5,over,Hits,MLB,standard,12738348,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,austin wells,nyy,cin,hits,0.5,under,Hits,MLB,standard,12738348,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,austin wells,nyy,cin,total_bases,0.5,over,Total Bases,MLB,standard,12738359,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,austin wells,nyy,cin,total_bases,0.5,under,Total Bases,MLB,standard,12738359,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,ben rice,nyy,cin,runs,0.5,over,Runs,MLB,standard,12738373,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,ben rice,nyy,cin,runs,0.5,under,Runs,MLB,standard,12738373,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jj bleday,cin,nyy,runs,0.5,over,Runs,MLB,standard,12738465,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jj bleday,cin,nyy,runs,0.5,under,Runs,MLB,standard,12738465,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jj bleday,cin,nyy,walks,0.5,over,Walks,MLB,standard,12738471,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,jj bleday,cin,nyy,walks,0.5,under,Walks,MLB,standard,12738471,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,paul goldschmidt,nyy,cin,singles,0.5,over,Singles,MLB,standard,12738548,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,paul goldschmidt,nyy,cin,singles,0.5,under,Singles,MLB,standard,12738548,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,ryan mcmahon,nyy,cin,hits,0.5,over,Hits,MLB,standard,12738554,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,ryan mcmahon,nyy,cin,hits,0.5,under,Hits,MLB,standard,12738554,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,ryan mcmahon,nyy,cin,total_bases,0.5,over,Total Bases,MLB,standard,12738565,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,ryan mcmahon,nyy,cin,total_bases,0.5,under,Total Bases,MLB,standard,12738565,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal stewart,cin,nyy,singles,0.5,over,Singles,MLB,standard,12738580,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,sal stewart,cin,nyy,singles,0.5,under,Singles,MLB,standard,12738580,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,spencer jones,nyy,cin,hits,0.5,over,Hits,MLB,standard,12738588,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,spencer jones,nyy,cin,hits,0.5,under,Hits,MLB,standard,12738588,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,spencer jones,nyy,cin,total_bases,0.5,over,Total Bases,MLB,standard,12738598,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:35:00.000-04:00,spencer jones,nyy,cin,total_bases,0.5,under,Total Bases,MLB,standard,12738598,2026-06-21T13:35:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,davis martin,cws,det,hits_allowed,5.5,over,Hits Allowed,MLB,standard,12740501,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,davis martin,cws,det,hits_allowed,5.5,under,Hits Allowed,MLB,standard,12740501,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,keider montero,det,cws,pitcher_strikeouts,3.5,over,Pitcher Strikeouts,MLB,standard,12740565,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,keider montero,det,cws,pitcher_strikeouts,3.5,under,Pitcher Strikeouts,MLB,standard,12740565,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,braden montgomery,cws,det,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740444,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,braden montgomery,cws,det,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740444,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,colson montgomery,cws,det,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740473,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,colson montgomery,cws,det,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740473,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,dillon dingler,det,cws,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740510,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,dillon dingler,det,cws,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740510,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,keider montero,det,cws,walks,1.5,over,Walks Allowed,MLB,standard,12740569,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,keider montero,det,cws,walks,1.5,under,Walks Allowed,MLB,standard,12740569,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kerry carpenter,det,cws,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740575,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kerry carpenter,det,cws,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740575,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,miguel vargas,cws,det,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740625,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,miguel vargas,cws,det,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740625,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,sam antonacci,cws,det,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740658,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,sam antonacci,cws,det,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740658,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,andrew benintendi,cws,det,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740431,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,andrew benintendi,cws,det,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740431,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,braden montgomery,cws,det,singles,0.5,over,Singles,MLB,standard,12740451,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,braden montgomery,cws,det,singles,0.5,under,Singles,MLB,standard,12740451,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,colt keith,det,cws,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740492,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,colt keith,det,cws,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740492,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,dillon dingler,det,cws,singles,0.5,over,Singles,MLB,standard,12740517,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,dillon dingler,det,cws,singles,0.5,under,Singles,MLB,standard,12740517,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,edgar quero,cws,det,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740529,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,edgar quero,cws,det,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740529,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,edgar quero,cws,det,singles,0.5,over,Singles,MLB,standard,12740532,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,edgar quero,cws,det,singles,0.5,under,Singles,MLB,standard,12740532,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,hao-yu lee,det,cws,hits,0.5,over,Hits,MLB,standard,12740537,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,hao-yu lee,det,cws,hits,0.5,under,Hits,MLB,standard,12740537,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,hao-yu lee,det,cws,total_bases,0.5,over,Total Bases,MLB,standard,12740545,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,hao-yu lee,det,cws,total_bases,0.5,under,Total Bases,MLB,standard,12740545,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,jahmai jones,det,cws,hits,0.5,over,Hits,MLB,standard,12740554,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,jahmai jones,det,cws,hits,0.5,under,Hits,MLB,standard,12740554,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,jahmai jones,det,cws,total_bases,0.5,over,Total Bases,MLB,standard,12740560,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,jahmai jones,det,cws,total_bases,0.5,under,Total Bases,MLB,standard,12740560,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kevin mcgonigle,det,cws,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740594,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kevin mcgonigle,det,cws,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740594,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kevin mcgonigle,det,cws,runs,0.5,over,Runs,MLB,standard,12740599,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kevin mcgonigle,det,cws,runs,0.5,under,Runs,MLB,standard,12740599,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kevin mcgonigle,det,cws,singles,0.5,over,Singles,MLB,standard,12740600,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,kevin mcgonigle,det,cws,singles,0.5,under,Singles,MLB,standard,12740600,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,riley greene,det,cws,singles,0.5,over,Singles,MLB,standard,12740648,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,riley greene,det,cws,singles,0.5,under,Singles,MLB,standard,12740648,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,sam antonacci,cws,det,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740660,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,sam antonacci,cws,det,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740660,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,james outman,det,cws,hits,0.5,over,Hits,MLB,standard,12741748,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T13:40:00.000-04:00,james outman,det,cws,hits,0.5,under,Hits,MLB,standard,12741748,2026-06-21T13:40:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,kai-wei teng,hou,cle,walks,2.5,over,Walks Allowed,MLB,standard,12742798,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,kai-wei teng,hou,cle,walks,2.5,under,Walks Allowed,MLB,standard,12742798,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,slade cecconi,cle,hou,runs_allowed,2.5,over,Earned Runs Allowed,MLB,standard,12742835,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,slade cecconi,cle,hou,runs_allowed,2.5,under,Earned Runs Allowed,MLB,standard,12742835,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,brayan rocchio,cle,hou,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12742618,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,brayan rocchio,cle,hou,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12742618,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,christian walker,hou,cle,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12742669,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,christian walker,hou,cle,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12742669,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,gabriel arias,cle,hou,strikeouts,1.5,over,Hitter Strikeouts,MLB,standard,12742706,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,gabriel arias,cle,hou,strikeouts,1.5,under,Hitter Strikeouts,MLB,standard,12742706,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,isaac paredes,hou,cle,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12742719,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,isaac paredes,hou,cle,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12742719,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jose altuve,hou,cle,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12742765,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jose altuve,hou,cle,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12742765,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,slade cecconi,cle,hou,walks,1.5,over,Walks Allowed,MLB,standard,12742839,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,slade cecconi,cle,hou,walks,1.5,under,Walks Allowed,MLB,standard,12742839,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,travis bazzana,cle,hou,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12742857,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,travis bazzana,cle,hou,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12742857,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,yordan alvarez,hou,cle,total_bases,1.5,over,Total Bases,MLB,standard,12742885,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,yordan alvarez,hou,cle,total_bases,1.5,under,Total Bases,MLB,standard,12742885,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,brayan rocchio,cle,hou,singles,0.5,over,Singles,MLB,standard,12742626,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,brayan rocchio,cle,hou,singles,0.5,under,Singles,MLB,standard,12742626,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,christian vázquez,hou,cle,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12742660,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,christian vázquez,hou,cle,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12742660,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,gabriel arias,cle,hou,hits,0.5,over,Hits,MLB,standard,12742702,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,gabriel arias,cle,hou,hits,0.5,under,Hits,MLB,standard,12742702,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,gabriel arias,cle,hou,total_bases,0.5,over,Total Bases,MLB,standard,12742713,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,gabriel arias,cle,hou,total_bases,0.5,under,Total Bases,MLB,standard,12742713,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jeremy peña,hou,cle,runs,0.5,over,Runs,MLB,standard,12742741,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jeremy peña,hou,cle,runs,0.5,under,Runs,MLB,standard,12742741,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jose altuve,hou,cle,singles,0.5,over,Singles,MLB,standard,12742772,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jose altuve,hou,cle,singles,0.5,under,Singles,MLB,standard,12742772,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,kahlil watson,cle,hou,hits,0.5,over,Hits,MLB,standard,12742780,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,kahlil watson,cle,hou,hits,0.5,under,Hits,MLB,standard,12742780,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,kahlil watson,cle,hou,total_bases,0.5,over,Total Bases,MLB,standard,12742792,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,kahlil watson,cle,hou,total_bases,0.5,under,Total Bases,MLB,standard,12742792,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,rhys hoskins,cle,hou,walks,0.5,over,Walks,MLB,standard,12742833,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,rhys hoskins,cle,hou,walks,0.5,under,Walks,MLB,standard,12742833,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,steven kwan,cle,hou,singles,0.5,over,Singles,MLB,standard,12742849,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,steven kwan,cle,hou,singles,0.5,under,Singles,MLB,standard,12742849,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,travis bazzana,cle,hou,runs,0.5,over,Runs,MLB,standard,12742865,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,travis bazzana,cle,hou,runs,0.5,under,Runs,MLB,standard,12742865,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,travis bazzana,cle,hou,walks,0.5,over,Walks,MLB,standard,12742871,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,travis bazzana,cle,hou,walks,0.5,under,Walks,MLB,standard,12742871,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,yordan alvarez,hou,cle,runs,0.5,over,Runs,MLB,standard,12742882,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,yordan alvarez,hou,cle,runs,0.5,under,Runs,MLB,standard,12742882,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,patrick bailey,cle,hou,hits,0.5,over,Hits,MLB,standard,12743408,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,patrick bailey,cle,hou,hits,0.5,under,Hits,MLB,standard,12743408,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,dustin may,stl,kc,hits_allowed,5.5,over,Hits Allowed,MLB,standard,12740055,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,dustin may,stl,kc,hits_allowed,5.5,under,Hits Allowed,MLB,standard,12740055,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,dustin may,stl,kc,runs_allowed,2.5,over,Earned Runs Allowed,MLB,standard,12740053,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,dustin may,stl,kc,runs_allowed,2.5,under,Earned Runs Allowed,MLB,standard,12740053,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,alec burleson,stl,kc,total_bases,1.5,over,Total Bases,MLB,standard,12740033,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,alec burleson,stl,kc,total_bases,1.5,under,Total Bases,MLB,standard,12740033,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,carter jensen,kc,stl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740040,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,carter jensen,kc,stl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740040,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,dustin may,stl,kc,walks,1.5,over,Walks Allowed,MLB,standard,12740058,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,dustin may,stl,kc,walks,1.5,under,Walks Allowed,MLB,standard,12740058,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jac caglianone,kc,stl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740115,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jac caglianone,kc,stl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740115,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jordan walker,stl,kc,total_bases,1.5,over,Total Bases,MLB,standard,12740161,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jordan walker,stl,kc,total_bases,1.5,under,Total Bases,MLB,standard,12740161,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,lane thomas,kc,stl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740181,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,lane thomas,kc,stl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740181,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,lars nootbaar,stl,kc,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740199,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,lars nootbaar,stl,kc,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740199,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,masyn winn,stl,kc,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740216,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,masyn winn,stl,kc,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740216,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nathan church,stl,kc,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740246,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nathan church,stl,kc,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740246,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,salvador perez,kc,stl,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12740287,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,salvador perez,kc,stl,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12740287,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,alec burleson,stl,kc,runs,0.5,over,Runs,MLB,standard,12740029,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,alec burleson,stl,kc,runs,0.5,under,Runs,MLB,standard,12740029,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,carter jensen,kc,stl,runs,0.5,over,Runs,MLB,standard,12740047,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,carter jensen,kc,stl,runs,0.5,under,Runs,MLB,standard,12740047,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,ivan herrera,stl,kc,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740081,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,ivan herrera,stl,kc,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740081,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,ivan herrera,stl,kc,runs,0.5,over,Runs,MLB,standard,12740086,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,ivan herrera,stl,kc,runs,0.5,under,Runs,MLB,standard,12740086,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jj wetherholt,stl,kc,runs,0.5,over,Runs,MLB,standard,12740104,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jj wetherholt,stl,kc,runs,0.5,under,Runs,MLB,standard,12740104,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jordan walker,stl,kc,runs,0.5,over,Runs,MLB,standard,12740157,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,jordan walker,stl,kc,runs,0.5,under,Runs,MLB,standard,12740157,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,josé fermín,stl,kc,singles,0.5,over,Singles,MLB,standard,12740173,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,josé fermín,stl,kc,singles,0.5,under,Singles,MLB,standard,12740173,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,lars nootbaar,stl,kc,singles,0.5,over,Singles,MLB,standard,12740207,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,lars nootbaar,stl,kc,singles,0.5,under,Singles,MLB,standard,12740207,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,michael massey,kc,stl,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740233,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,michael massey,kc,stl,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740233,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nathan church,stl,kc,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740248,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nathan church,stl,kc,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740248,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nathan church,stl,kc,singles,0.5,over,Singles,MLB,standard,12740254,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nathan church,stl,kc,singles,0.5,under,Singles,MLB,standard,12740254,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nick loftin,kc,stl,singles,0.5,over,Singles,MLB,standard,12740280,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,nick loftin,kc,stl,singles,0.5,under,Singles,MLB,standard,12740280,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,salvador perez,kc,stl,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740289,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,salvador perez,kc,stl,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740289,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,salvador perez,kc,stl,singles,0.5,over,Singles,MLB,standard,12740295,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,salvador perez,kc,stl,singles,0.5,under,Singles,MLB,standard,12740295,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,masyn winn,stl,kc,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12740721,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,masyn winn,stl,kc,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12740721,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,john rave,kc,stl,hits,0.5,over,Hits,MLB,standard,12743163,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:10:00.000-04:00,john rave,kc,stl,hits,0.5,under,Hits,MLB,standard,12743163,2026-06-21T14:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,shota imanaga,chc,tor,hits_allowed,5.5,over,Hits Allowed,MLB,standard,12741320,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,shota imanaga,chc,tor,hits_allowed,5.5,under,Hits Allowed,MLB,standard,12741320,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,dylan cease,tor,chc,walks,2.5,over,Walks Allowed,MLB,standard,12741149,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,dylan cease,tor,chc,walks,2.5,under,Walks Allowed,MLB,standard,12741149,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,shota imanaga,chc,tor,runs_allowed,2.5,over,Earned Runs Allowed,MLB,standard,12741319,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,shota imanaga,chc,tor,runs_allowed,2.5,under,Earned Runs Allowed,MLB,standard,12741319,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,alejandro kirk,tor,chc,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12741060,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,alejandro kirk,tor,chc,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12741060,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,kazuma okamoto,tor,chc,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12741204,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,kazuma okamoto,tor,chc,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12741204,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,pete crow-armstrong,chc,tor,hits_runs_rbis,1.5,over,Hits+Runs+RBIs,MLB,standard,12741288,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,pete crow-armstrong,chc,tor,hits_runs_rbis,1.5,under,Hits+Runs+RBIs,MLB,standard,12741288,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,alejandro kirk,tor,chc,singles,0.5,over,Singles,MLB,standard,12741068,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,alejandro kirk,tor,chc,singles,0.5,under,Singles,MLB,standard,12741068,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,carson kelly,chc,tor,hits,0.5,over,Hits,MLB,standard,12741101,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,carson kelly,chc,tor,hits,0.5,under,Hits,MLB,standard,12741101,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,carson kelly,chc,tor,total_bases,0.5,over,Total Bases,MLB,standard,12741111,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,carson kelly,chc,tor,total_bases,0.5,under,Total Bases,MLB,standard,12741111,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,dansby swanson,chc,tor,hits,0.5,over,Hits,MLB,standard,12741115,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,dansby swanson,chc,tor,hits,0.5,under,Hits,MLB,standard,12741115,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,dansby swanson,chc,tor,total_bases,0.5,over,Total Bases,MLB,standard,12741126,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,dansby swanson,chc,tor,total_bases,0.5,under,Total Bases,MLB,standard,12741126,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,george springer,tor,chc,runs,0.5,over,Runs,MLB,standard,12741177,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,george springer,tor,chc,runs,0.5,under,Runs,MLB,standard,12741177,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,ian happ,chc,tor,hits,0.5,over,Hits,MLB,standard,12741184,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,ian happ,chc,tor,hits,0.5,under,Hits,MLB,standard,12741184,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,ian happ,chc,tor,total_bases,0.5,over,Total Bases,MLB,standard,12741197,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,ian happ,chc,tor,total_bases,0.5,under,Total Bases,MLB,standard,12741197,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,michael conforto,chc,tor,hits,0.5,over,Hits,MLB,standard,12741234,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,michael conforto,chc,tor,hits,0.5,under,Hits,MLB,standard,12741234,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,michael conforto,chc,tor,total_bases,0.5,over,Total Bases,MLB,standard,12741243,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,michael conforto,chc,tor,total_bases,0.5,under,Total Bases,MLB,standard,12741243,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,myles straw,tor,chc,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12741251,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,myles straw,tor,chc,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12741251,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,nathan lukes,tor,chc,singles,0.5,over,Singles,MLB,standard,12741268,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,nathan lukes,tor,chc,singles,0.5,under,Singles,MLB,standard,12741268,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,nico hoerner,chc,tor,singles,0.5,over,Singles,MLB,standard,12741279,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,nico hoerner,chc,tor,singles,0.5,under,Singles,MLB,standard,12741279,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,vladimir guerrero jr.,tor,chc,strikeouts,0.5,over,Hitter Strikeouts,MLB,standard,12741331,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T14:20:00.000-04:00,vladimir guerrero jr.,tor,chc,strikeouts,0.5,under,Hitter Strikeouts,MLB,standard,12741331,2026-06-21T14:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,coby mayo,bal,lad,hits,0.5,over,Hits,MLB,standard,12743228,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,coby mayo,bal,lad,hits,0.5,under,Hits,MLB,standard,12743228,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,colton cowser,bal,lad,hits,0.5,over,Hits,MLB,standard,12743240,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,colton cowser,bal,lad,hits,0.5,under,Hits,MLB,standard,12743240,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,colt emerson,sea,bos,hits,0.5,over,Hits,MLB,standard,12743105,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,colt emerson,sea,bos,hits,0.5,under,Hits,MLB,standard,12743105,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,marcelo mayer,bos,sea,hits,0.5,over,Hits,MLB,standard,12743119,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T16:10:00.000-04:00,marcelo mayer,bos,sea,hits,0.5,under,Hits,MLB,standard,12743119,2026-06-21T16:10:00.000-04:00
+PrizePicks,MLB,2026-06-21T19:20:00.000-04:00,zack wheeler,phi,nym,pitcher_strikeouts,6.5,over,Pitcher Strikeouts,MLB,standard,12739995,2026-06-21T19:20:00.000-04:00
+PrizePicks,MLB,2026-06-21T19:20:00.000-04:00,zack wheeler,phi,nym,pitcher_strikeouts,6.5,under,Pitcher Strikeouts,MLB,standard,12739995,2026-06-21T19:20:00.000-04:00

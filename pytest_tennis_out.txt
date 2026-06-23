@@ -1,0 +1,267 @@
+Drive already SUBSTed
+F.F...F.F.....FFF.                                                       [100%]
+================================== FAILURES ===================================
+______________________ test_count_break_points_won_basic ______________________
+
+    def test_count_break_points_won_basic():
+        pointbypoint = [
+            {
+                "player_served": "First Player",
+                "points": [
+                    {"score": "0 - 15", "break_point": "Second Player"},
+                    {"score": "0 - 30", "break_point": "Second Player"},
+                    {"score": "0 - 40", "break_point": "Second Player"},
+                    {"score": "0 - 0", "break_point": None},
+                ],
+            }
+        ]
+>       assert count_break_points_won(pointbypoint, "second") == 3
+E       AssertionError: assert 2 == 3
+E        +  where 2 = count_break_points_won([{'player_served': 'First Player', 'points': [{'break_point': 'Second Player', 'score': '0 - 15'}, {'break_point': 'Se...r', 'score': '0 - 30'}, {'break_point': 'Second Player', 'score': '0 - 40'}, {'break_point': None, 'score': '0 - 0'}]}], 'second')
+
+X:\tests\test_tennis_client.py:16: AssertionError
+________________________ test_normalize_stat_type_nba _________________________
+
+    def test_normalize_stat_type_nba():
+        assert normalize_stat_type("Points") == "points"
+        assert normalize_stat_type("Pts+Rebs+Asts") == "pra"
+        assert normalize_stat_type("3-PT Made") == "threes"
+        assert normalize_stat_type("Free Throws Made") is None
+>       assert normalize_stat_type("Pts+Rebs") is None
+E       AssertionError: assert 'pts_rebs' is None
+E        +  where 'pts_rebs' = normalize_stat_type('Pts+Rebs')
+
+X:\tests\test_prizepicks.py:13: AssertionError
+____________________ test_resolve_kbo_from_cached_leagues _____________________
+
+self = Index(['league_id', 'name', 'active'], dtype='str')
+key = 'projections_count'
+
+    def get_loc(self, key):
+        """
+        Get integer location, slice or boolean mask for requested label.
+    
+        Parameters
+        ----------
+        key : label
+            The key to check its location if it is present in the index.
+    
+        Returns
+        -------
+        int if unique index, slice if monotonic index, else mask
+            Integer location, slice or boolean mask.
+    
+        See Also
+        --------
+        Index.get_slice_bound : Calculate slice bound that corresponds to
+            given label.
+        Index.get_indexer : Computes indexer and mask for new index given
+            the current index.
+        Index.get_non_unique : Returns indexer and masks for new index given
+            the current index.
+        Index.get_indexer_for : Returns an indexer even when non-unique.
+    
+        Examples
+        --------
+        >>> unique_index = pd.Index(list("abc"))
+        >>> unique_index.get_loc("b")
+        1
+    
+        >>> monotonic_index = pd.Index(list("abbc"))
+        >>> monotonic_index.get_loc("b")
+        slice(1, 3, None)
+    
+        >>> non_monotonic_index = pd.Index(list("abcb"))
+        >>> non_monotonic_index.get_loc("b")
+        array([False,  True, False,  True])
+        """
+        casted_key = self._maybe_cast_indexer(key)
+        try:
+>           return self._engine.get_loc(casted_key)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+X:\.venv\Lib\site-packages\pandas\core\indexes\base.py:3641: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pandas/_libs/index.pyx:168: in pandas._libs.index.IndexEngine.get_loc
+    ???
+pandas/_libs/index.pyx:197: in pandas._libs.index.IndexEngine.get_loc
+    ???
+pandas/_libs/hashtable_class_helper.pxi:7668: in pandas._libs.hashtable.PyObjectHashTable.get_item
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   ???
+E   KeyError: 'projections_count'
+
+pandas/_libs/hashtable_class_helper.pxi:7676: KeyError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath("C:/Users/Alex's Liar/AppData/Local/Temp/pytest-of-Alex's Liar/pytest-0/test_resolve_kbo_from_cached_l0")
+
+    def test_resolve_kbo_from_cached_leagues(tmp_path):
+        cache = tmp_path / "leagues.json"
+        cache.write_text(
+            '[{"league_id": "242", "name": "KBO", "active": true}]',
+            encoding="utf-8",
+        )
+>       assert resolve_league_id("KBO", cache_path=cache) == "242"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+X:\tests\test_prizepicks.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+X:\src\sports_prop_edge\integrations\prizepicks_source.py:474: in resolve_league_id
+    row = _primary_league_row(leagues, query)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+X:\src\sports_prop_edge\integrations\prizepicks_source.py:383: in _primary_league_row
+    work["_count"] = pd.to_numeric(work["projections_count"], errors="coerce").fillna(0)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+X:\.venv\Lib\site-packages\pandas\core\frame.py:4378: in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Index(['league_id', 'name', 'active'], dtype='str')
+key = 'projections_count'
+
+    def get_loc(self, key):
+        """
+        Get integer location, slice or boolean mask for requested label.
+    
+        Parameters
+        ----------
+        key : label
+            The key to check its location if it is present in the index.
+    
+        Returns
+        -------
+        int if unique index, slice if monotonic index, else mask
+            Integer location, slice or boolean mask.
+    
+        See Also
+        --------
+        Index.get_slice_bound : Calculate slice bound that corresponds to
+            given label.
+        Index.get_indexer : Computes indexer and mask for new index given
+            the current index.
+        Index.get_non_unique : Returns indexer and masks for new index given
+            the current index.
+        Index.get_indexer_for : Returns an indexer even when non-unique.
+    
+        Examples
+        --------
+        >>> unique_index = pd.Index(list("abc"))
+        >>> unique_index.get_loc("b")
+        1
+    
+        >>> monotonic_index = pd.Index(list("abbc"))
+        >>> monotonic_index.get_loc("b")
+        slice(1, 3, None)
+    
+        >>> non_monotonic_index = pd.Index(list("abcb"))
+        >>> non_monotonic_index.get_loc("b")
+        array([False,  True, False,  True])
+        """
+        casted_key = self._maybe_cast_indexer(key)
+        try:
+            return self._engine.get_loc(casted_key)
+        except KeyError as err:
+            if isinstance(casted_key, slice) or (
+                isinstance(casted_key, abc.Iterable)
+                and any(isinstance(x, slice) for x in casted_key)
+            ):
+                raise InvalidIndexError(key) from err
+>           raise KeyError(key) from err
+E           KeyError: 'projections_count'
+
+X:\.venv\Lib\site-packages\pandas\core\indexes\base.py:3648: KeyError
+________________________ test_classify_hitter_fantasy _________________________
+
+    def test_classify_hitter_fantasy():
+>       assert classify_prop_role("Hitter Fantasy Score", "fantasy_points") == "hitter"
+E       AssertionError: assert 'other' == 'hitter'
+E         
+E         - hitter
+E         + other
+
+X:\tests\test_prop_filters.py:20: AssertionError
+____________ test_is_modelable_prop_basketball_primary_stats_only _____________
+
+    def test_is_modelable_prop_basketball_primary_stats_only():
+        assert is_modelable_prop("Points", "points", "WNBA") is True
+>       assert is_modelable_prop("Pts+Rebs+Asts", "pra", "NBA") is True
+E       AssertionError: assert False is True
+E        +  where False = is_modelable_prop('Pts+Rebs+Asts', 'pra', 'NBA')
+
+X:\tests\test_prop_filters.py:77: AssertionError
+_____________ test_filter_playable_props_drops_fantasy_and_combos _____________
+
+    def test_filter_playable_props_drops_fantasy_and_combos():
+        props = pd.DataFrame(
+            [
+                {"player": "a", "market": "points", "stat_type": "Points", "league": "WNBA"},
+                {"player": "a", "market": "fantasy_points", "stat_type": "Fantasy Score", "league": "WNBA"},
+                {"player": "a + b", "market": "points", "stat_type": "Points (Combo)", "league": "WNBA"},
+                {"player": "b", "market": "rebounds", "stat_type": "Rebounds", "league": "WNBA"},
+                {"player": "c", "market": "pra", "stat_type": "Pts+Rebs+Asts", "league": "NBA"},
+            ]
+        )
+        out = filter_playable_props(props)
+>       assert set(out["player"]) == {"a", "b", "c"}
+E       AssertionError: assert {'a', 'b'} == {'a', 'b', 'c'}
+E         
+E         Extra items in the right set:
+E         'c'
+E         Use -v to get more diff
+
+X:\tests\test_prop_filters.py:100: AssertionError
+________ test_filter_playable_props_drops_mislabeled_basketball_stats _________
+
+    def test_filter_playable_props_drops_mislabeled_basketball_stats():
+        props = pd.DataFrame(
+            [
+                {
+                    "player": "a",
+                    "market": "points",
+                    "stat_type": "Points",
+                    "game_title": "WNBA",
+                    "league": "WNBA",
+                },
+                {
+                    "player": "a",
+                    "market": "points",
+                    "stat_type": "Free Throws Made",
+                    "game_title": "WNBA",
+                    "league": "WNBA",
+                },
+                {
+                    "player": "b",
+                    "market": "pts_rebs",
+                    "stat_type": "Pts+Rebs",
+                    "game_title": "WNBA",
+                    "league": "WNBA",
+                },
+                {
+                    "player": "c",
+                    "market": "points",
+                    "stat_type": "Pts+Rebs",
+                    "game_title": "WNBA",
+                    "league": "WNBA",
+                },
+            ]
+        )
+        out = filter_playable_props(props)
+>       assert len(out) == 2
+E       assert 1 == 2
+E        +  where 1 = len(  player  market stat_type game_title league\n0      a  points    Points       WNBA   WNBA)
+
+X:\tests\test_prop_filters.py:138: AssertionError
+=========================== short test summary info ===========================
+FAILED X:\tests\test_tennis_client.py::test_count_break_points_won_basic - As...
+FAILED X:\tests\test_prizepicks.py::test_normalize_stat_type_nba - AssertionE...
+FAILED X:\tests\test_prizepicks.py::test_resolve_kbo_from_cached_leagues - Ke...
+FAILED X:\tests\test_prop_filters.py::test_classify_hitter_fantasy - Assertio...
+FAILED X:\tests\test_prop_filters.py::test_is_modelable_prop_basketball_primary_stats_only
+FAILED X:\tests\test_prop_filters.py::test_filter_playable_props_drops_fantasy_and_combos
+FAILED X:\tests\test_prop_filters.py::test_filter_playable_props_drops_mislabeled_basketball_stats
+7 failed, 11 passed in 2.93s

@@ -1,0 +1,7 @@
+sport,player,enabled,statiz_player_id,mykbo_player_id,nba_player_id,notes
+KBO,choi jeong,true,75847,451,,SSG — active KBO watch
+NBA,jaylen brown,false,,,,demo placeholder — enable + load NBA props to use
+NBA,anthony davis,false,,,,demo placeholder — not on your PP board
+NFL,patrick mahomes,false,,,,demo placeholder — NFL off-season
+NFL,travis kelce,false,,,,demo placeholder — NFL off-season
+KBO,lee jung-hoo,false,,,,MLB Giants since 2024

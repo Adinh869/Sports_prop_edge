@@ -1,0 +1,195 @@
+date,game_title,player,team,opponent,minutes,games,plate_appearances,hits,runs,rbis,strikeouts,total_bases,walks,stolen_bases,singles,doubles,innings_pitched,outs_pitched,pitcher_strikeouts,hits_allowed,earned_runs
+2026-03-31,KBO,adam oller,unknown,lg,1,1,0.0,,0.0,,,,1.0,,,,6.0,18.0,3.0,3.0,0.0
+2026-04-05,KBO,adam oller,unknown,nc,1,1,0.0,,0.0,,,,0.0,,,,7.0,21.0,5.0,3.0,0.0
+2026-04-12,KBO,adam oller,unknown,hanwha,1,1,0.0,,2.0,,,,4.0,,,,5.0,15.0,7.0,5.0,2.0
+2026-04-24,KBO,adam oller,unknown,lotte,1,1,0.0,,0.0,,,,2.0,,,,9.0,27.0,11.0,3.0,0.0
+2026-04-30,KBO,adam oller,unknown,nc,1,1,0.0,,4.0,,,,2.0,,,,5.0,15.0,5.0,5.0,4.0
+2026-05-06,KBO,adam oller,unknown,hanwha,1,1,0.0,,5.0,,,,3.0,,,,6.0,18.0,4.0,7.0,5.0
+2026-05-12,KBO,adam oller,unknown,doosan,1,1,0.0,,5.0,,,,1.0,,,,6.0,18.0,6.0,6.0,5.0
+2026-05-19,KBO,adam oller,unknown,lg,1,1,0.0,,0.0,,,,2.0,,,,6.0,18.0,10.0,4.0,0.0
+2026-05-24,KBO,adam oller,unknown,ssg,1,1,0.0,,0.0,,,,0.0,,,,6.0,18.0,9.0,1.0,0.0
+2026-05-30,KBO,adam oller,unknown,lg,1,1,0.0,,3.0,,,,3.0,,,,6.0,18.0,8.0,5.0,3.0
+2026-06-05,KBO,adam oller,unknown,samsung,1,1,0.0,,0.0,,,,2.0,,,,7.0,21.0,9.0,2.0,0.0
+2026-06-11,KBO,adam oller,unknown,hanwha,1,1,0.0,,4.0,,,,3.0,,,,6.0,18.0,4.0,4.0,4.0
+2026-06-10,KBO,aderlin rodriguez,kia tigers,hanwha eagles,1,1,5.0,1.0,0.0,1.0,2.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,an joong-yeol,nc dinos,kiwoom heroes,1,1,4.0,2.0,0.0,0.0,2.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-04-05,KBO,anthony veneziano,unknown,lotte,1,1,0.0,,3.0,,,,2.0,,,,5.0,15.0,4.0,8.0,3.0
+2026-04-26,KBO,anthony veneziano,unknown,kt,1,1,0.0,,5.0,,,,1.0,,,,5.0,15.0,5.0,6.0,4.0
+2026-05-02,KBO,anthony veneziano,unknown,lotte,1,1,0.0,,2.0,,,,0.0,,,,5.0,15.0,3.0,3.0,2.0
+2026-06-07,KBO,anthony veneziano,unknown,kt,1,1,0.0,,0.0,,,,2.0,,,,7.0,21.0,8.0,2.0,0.0
+2026-03-28,KBO,ariel jurado,unknown,lotte,1,1,0.0,,3.0,,,,0.0,,,,6.0,18.0,2.0,7.0,3.0
+2026-04-03,KBO,ariel jurado,unknown,kt,1,1,0.0,,1.0,,,,1.0,,,,6.0,18.0,4.0,5.0,1.0
+2026-04-10,KBO,ariel jurado,unknown,nc,1,1,0.0,,2.0,,,,1.0,,,,6.0,18.0,4.0,6.0,1.0
+2026-04-16,KBO,ariel jurado,unknown,hanwha,1,1,0.0,,1.0,,,,0.0,,,,7.0,21.0,5.0,6.0,1.0
+2026-04-22,KBO,ariel jurado,unknown,ssg,1,1,0.0,,1.0,,,,2.0,,,,7.0,21.0,5.0,4.0,1.0
+2026-04-28,KBO,ariel jurado,unknown,doosan,1,1,0.0,,0.0,,,,0.0,,,,7.0,21.0,7.0,6.0,0.0
+2026-05-03,KBO,ariel jurado,unknown,hanwha,1,1,0.0,,3.0,,,,2.0,,,,6.0,18.0,2.0,5.0,3.0
+2026-05-09,KBO,ariel jurado,unknown,nc,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,5.0,5.0,2.0
+2026-05-15,KBO,ariel jurado,unknown,kia,1,1,0.0,,3.0,,,,0.0,,,,7.0,21.0,7.0,10.0,3.0
+2026-05-27,KBO,ariel jurado,unknown,ssg,1,1,0.0,,1.0,,,,1.0,,,,7.0,21.0,3.0,5.0,0.0
+2026-06-10,KBO,austin dean,lg twins,ssg landers,1,1,5.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,choi hyoung-woo,samsung lions,kt wiz,1,1,4.0,1.0,0.0,1.0,2.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-05-02,KBO,choi jeong,unknown,lotte,1,1,4.0,2.0,2.0,3.0,0.0,6.0,0.0,0.0,0.0,1.0,,,,,
+2026-05-03,KBO,choi jeong,unknown,lotte,1,1,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,,,
+2026-05-05,KBO,choi jeong,unknown,nc,1,1,7.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,,,,,
+2026-05-06,KBO,choi jeong,unknown,nc,1,1,3.0,1.0,1.0,2.0,0.0,4.0,1.0,0.0,0.0,0.0,,,,,
+2026-05-08,KBO,choi jeong,unknown,doosan,1,1,5.0,2.0,0.0,0.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-05-09,KBO,choi jeong,unknown,doosan,1,1,5.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-05-10,KBO,choi jeong,unknown,doosan,1,1,4.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-05-12,KBO,choi jeong,unknown,kt,1,1,3.0,1.0,1.0,2.0,0.0,4.0,1.0,0.0,0.0,0.0,,,,,
+2026-05-13,KBO,choi jeong,unknown,kt,1,1,2.0,1.0,1.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-05-14,KBO,choi jeong,unknown,kt,1,1,5.0,2.0,2.0,3.0,0.0,5.0,1.0,0.0,1.0,0.0,,,,,
+2026-05-15,KBO,choi jeong,unknown,lg,1,1,5.0,1.0,0.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-05-16,KBO,choi jeong,unknown,lg,1,1,4.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,,,,,
+2026-05-17,KBO,choi jeong,unknown,lg,1,1,4.0,1.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,1.0,,,,,
+2026-05-19,KBO,choi jeong,unknown,kiwoom,1,1,5.0,1.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-05-30,KBO,choi jeong,unknown,hanwha,1,1,5.0,3.0,2.0,3.0,0.0,7.0,0.0,0.0,1.0,1.0,,,,,
+2026-05-31,KBO,choi jeong,unknown,hanwha,1,1,4.0,1.0,0.0,2.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-02,KBO,choi jeong,unknown,kiwoom,1,1,4.0,2.0,1.0,2.0,0.0,6.0,0.0,0.0,0.0,1.0,,,,,
+2026-06-03,KBO,choi jeong,unknown,kiwoom,1,1,3.0,1.0,1.0,2.0,0.0,4.0,0.0,0.0,0.0,0.0,,,,,
+2026-06-04,KBO,choi jeong,unknown,kiwoom,1,1,5.0,4.0,1.0,2.0,0.0,6.0,0.0,0.0,2.0,2.0,,,,,
+2026-06-05,KBO,choi jeong,unknown,kt,1,1,3.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,,,,,
+2026-06-10,KBO,choi jeong,nc dinos,kiwoom heroes,1,1,4.0,2.0,0.0,0.0,2.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,choi joo-hwan,kiwoom heroes,nc dinos,1,1,6.0,3.0,1.0,2.0,0.0,3.0,2.0,0.0,3.0,0.0,,,,,
+2026-06-10,KBO,choi won-jun,kt wiz,samsung lions,1,1,4.0,1.0,2.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-03-29,KBO,choi won-tae,unknown,lotte,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,5.0,7.0,2.0
+2026-04-04,KBO,choi won-tae,unknown,kt,1,1,0.0,,5.0,,,,3.0,,,,5.0,15.0,8.0,7.0,5.0
+2026-05-12,KBO,choi won-tae,unknown,lg,1,1,0.0,,0.0,,,,3.0,,,,6.0,18.0,4.0,4.0,0.0
+2026-05-17,KBO,choi won-tae,unknown,kia,1,1,0.0,,7.0,,,,2.0,,,,4.0,12.0,4.0,8.0,7.0
+2026-05-28,KBO,choi won-tae,unknown,ssg,1,1,0.0,,0.0,,,,3.0,,,,7.0,21.0,8.0,2.0,0.0
+2026-06-10,KBO,daz cameron,doosan bears,lotte giants,1,1,5.0,2.0,1.0,2.0,1.0,5.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,go seung-min,lotte giants,doosan bears,1,1,5.0,1.0,2.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,guillermo heredia,ssg landers,lg twins,1,1,4.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,,,,,
+2026-06-10,KBO,hong chang-ki,kia tigers,hanwha eagles,1,1,4.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,,,,,
+2026-03-28,KBO,james naile,unknown,ssg,1,1,0.0,,0.0,,,,1.0,,,,6.0,18.0,5.0,2.0,0.0
+2026-04-03,KBO,james naile,unknown,nc,1,1,0.0,,2.0,,,,3.0,,,,5.0,15.0,5.0,3.0,2.0
+2026-04-10,KBO,james naile,unknown,hanwha,1,1,0.0,,3.0,,,,0.0,,,,7.0,21.0,4.0,6.0,3.0
+2026-04-16,KBO,james naile,unknown,kiwoom,1,1,0.0,,1.0,,,,0.0,,,,5.0,15.0,3.0,6.0,1.0
+2026-04-22,KBO,james naile,unknown,kt,1,1,0.0,,2.0,,,,1.0,,,,5.0,15.0,4.0,6.0,2.0
+2026-04-28,KBO,james naile,unknown,nc,1,1,0.0,,5.0,,,,1.0,,,,6.0,18.0,4.0,8.0,5.0
+2026-05-03,KBO,james naile,unknown,kt,1,1,0.0,,6.0,,,,2.0,,,,5.0,15.0,4.0,7.0,6.0
+2026-05-09,KBO,james naile,unknown,lotte,1,1,0.0,,1.0,,,,0.0,,,,6.0,18.0,4.0,5.0,1.0
+2026-05-15,KBO,james naile,unknown,samsung,1,1,0.0,,1.0,,,,0.0,,,,6.0,18.0,3.0,5.0,1.0
+2026-05-27,KBO,james naile,unknown,kiwoom,1,1,0.0,,1.0,,,,0.0,,,,7.0,21.0,8.0,6.0,1.0
+2026-06-02,KBO,james naile,unknown,lotte,1,1,0.0,,0.0,,,,2.0,,,,6.0,18.0,4.0,3.0,0.0
+2026-06-07,KBO,james naile,unknown,samsung,1,1,0.0,,3.0,,,,3.0,,,,6.0,18.0,4.0,6.0,3.0
+2026-06-13,KBO,james naile,unknown,doosan,1,1,0.0,,1.0,,,,0.0,,,,6.0,18.0,6.0,5.0,1.0
+2026-06-10,KBO,jeon min-jae,lotte giants,doosan bears,1,1,4.0,2.0,0.0,1.0,1.0,2.0,1.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,jeong jun-jae,lg twins,ssg landers,1,1,4.0,2.0,1.0,1.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,jung soo-bin,lotte giants,doosan bears,1,1,4.0,2.0,1.0,1.0,1.0,5.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kang baek-ho,kia tigers,hanwha eagles,1,1,4.0,2.0,1.0,0.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,keston hiura,kiwoom heroes,nc dinos,1,1,5.0,3.0,1.0,4.0,1.0,6.0,1.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,kim do-yeong,kia tigers,hanwha eagles,1,1,5.0,2.0,2.0,3.0,1.0,5.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kim hyun-soo,kt wiz,samsung lions,1,1,4.0,3.0,2.0,1.0,0.0,3.0,0.0,0.0,3.0,0.0,,,,,
+2026-06-10,KBO,kim ji-chan,samsung lions,kt wiz,1,1,4.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kim ju-won,nc dinos,kiwoom heroes,1,1,5.0,1.0,1.0,1.0,0.0,4.0,1.0,0.0,0.0,0.0,,,,,
+2026-03-29,KBO,kim keon-woo,unknown,kia,1,1,0.0,,2.0,,,,3.0,,,,5.0,15.0,4.0,5.0,2.0
+2026-04-11,KBO,kim keon-woo,unknown,lg,1,1,0.0,,1.0,,,,2.0,,,,6.0,18.0,5.0,4.0,1.0
+2026-04-24,KBO,kim keon-woo,unknown,kt,1,1,0.0,,0.0,,,,2.0,,,,7.0,21.0,7.0,3.0,0.0
+2026-05-12,KBO,kim keon-woo,unknown,kt,1,1,0.0,,1.0,,,,2.0,,,,5.0,15.0,3.0,6.0,1.0
+2026-05-17,KBO,kim keon-woo,unknown,lg,1,1,0.0,,5.0,,,,3.0,,,,5.0,15.0,4.0,4.0,5.0
+2026-06-05,KBO,kim keon-woo,unknown,kt,1,1,0.0,,3.0,,,,2.0,,,,5.0,15.0,6.0,7.0,2.0
+2026-06-10,KBO,kim min-hyuck,kt wiz,samsung lions,1,1,4.0,1.0,0.0,2.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kim min-kyu,kia tigers,hanwha eagles,1,1,5.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kim min-suk,doosan bears,lotte giants,1,1,4.0,1.0,2.0,0.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kim seong-uk,ssg landers,lg twins,1,1,4.0,3.0,2.0,0.0,0.0,3.0,1.0,0.0,3.0,0.0,,,,,
+2026-06-10,KBO,kim seong-yoon,samsung lions,kt wiz,1,1,4.0,1.0,1.0,0.0,0.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kim sun-bin,kiwoom heroes,nc dinos,1,1,5.0,1.0,0.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,koo ja-wook,samsung lions,kt wiz,1,1,4.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,kwon hui-dong,nc dinos,kiwoom heroes,1,1,5.0,3.0,2.0,1.0,1.0,3.0,0.0,0.0,3.0,0.0,,,,,
+2026-06-10,KBO,lewin diaz,samsung lions,kt wiz,1,1,4.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,,,,,
+2026-06-10,KBO,matt davidson,nc dinos,kiwoom heroes,1,1,4.0,2.0,0.0,0.0,1.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-03-28,KBO,matt sauer,unknown,lg,1,1,0.0,,3.0,,,,5.0,,,,5.0,15.0,1.0,5.0,3.0
+2026-04-03,KBO,matt sauer,unknown,samsung,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,3.0,5.0,2.0
+2026-04-10,KBO,matt sauer,unknown,doosan,1,1,0.0,,4.0,,,,3.0,,,,6.0,18.0,4.0,7.0,4.0
+2026-04-28,KBO,matt sauer,unknown,lg,1,1,0.0,,2.0,,,,1.0,,,,6.0,18.0,5.0,6.0,2.0
+2026-05-03,KBO,matt sauer,unknown,kia,1,1,0.0,,3.0,,,,2.0,,,,6.0,18.0,7.0,4.0,3.0
+2026-05-12,KBO,matt sauer,unknown,ssg,1,1,0.0,,5.0,,,,2.0,,,,5.0,15.0,3.0,7.0,5.0
+2026-05-17,KBO,matt sauer,unknown,hanwha,1,1,0.0,,3.0,,,,4.0,,,,5.0,15.0,6.0,4.0,3.0
+2026-05-29,KBO,matt sauer,unknown,kiwoom,1,1,0.0,,1.0,,,,5.0,,,,7.0,21.0,3.0,4.0,1.0
+2026-06-10,KBO,matt sauer,unknown,samsung,1,1,0.0,,2.0,,,,3.0,,,,6.0,18.0,5.0,1.0,2.0
+2026-06-10,KBO,moon hyun-bin,hanwha eagles,kia tigers,1,1,4.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,,,,,
+2026-06-10,KBO,na seung-yeup,lotte giants,doosan bears,1,1,5.0,1.0,1.0,0.0,1.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,na sung-bum,lg twins,ssg landers,1,1,5.0,1.0,1.0,1.0,0.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-03-31,KBO,natsuki toda,unknown,lotte,1,1,0.0,,2.0,,,,4.0,,,,5.0,15.0,4.0,3.0,2.0
+2026-04-05,KBO,natsuki toda,unknown,kia,1,1,0.0,,2.0,,,,1.0,,,,6.0,18.0,2.0,6.0,2.0
+2026-04-12,KBO,natsuki toda,unknown,samsung,1,1,0.0,,4.0,,,,2.0,,,,2.0,6.0,2.0,4.0,3.0
+2026-04-19,KBO,natsuki toda,unknown,ssg,1,1,0.0,,1.0,,,,3.0,,,,4.0,12.0,5.0,5.0,1.0
+2026-04-25,KBO,natsuki toda,unknown,hanwha,1,1,0.0,,6.0,,,,2.0,,,,6.0,18.0,2.0,8.0,6.0
+2026-05-01,KBO,natsuki toda,unknown,lg,1,1,0.0,,5.0,,,,2.0,,,,5.0,15.0,4.0,5.0,5.0
+2026-05-14,KBO,natsuki toda,unknown,lotte,1,1,0.0,,1.0,,,,0.0,,,,6.0,18.0,5.0,4.0,1.0
+2026-05-27,KBO,natsuki toda,unknown,hanwha,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,4.0,7.0,2.0
+2026-06-13,KBO,natsuki toda,unknown,kt,1,1,0.0,,7.0,,,,1.0,,,,5.0,15.0,6.0,11.0,5.0
+2026-06-10,KBO,oh ji-hwan,lg twins,ssg landers,1,1,4.0,1.0,1.0,0.0,1.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-04-02,KBO,oh won-seok,unknown,hanwha,1,1,0.0,,1.0,,,,0.0,,,,6.0,18.0,7.0,4.0,1.0
+2026-04-08,KBO,oh won-seok,unknown,lotte,1,1,0.0,,3.0,,,,1.0,,,,4.0,12.0,5.0,6.0,1.0
+2026-04-15,KBO,oh won-seok,unknown,nc,1,1,0.0,,1.0,,,,1.0,,,,7.0,21.0,6.0,6.0,1.0
+2026-04-26,KBO,oh won-seok,unknown,ssg,1,1,0.0,,2.0,,,,1.0,,,,6.0,18.0,6.0,5.0,2.0
+2026-05-08,KBO,oh won-seok,unknown,kiwoom,1,1,0.0,,0.0,,,,1.0,,,,7.0,21.0,5.0,4.0,0.0
+2026-05-14,KBO,oh won-seok,unknown,ssg,1,1,0.0,,7.0,,,,2.0,,,,3.0,9.0,3.0,7.0,7.0
+2026-05-27,KBO,oh won-seok,unknown,doosan,1,1,0.0,,5.0,,,,0.0,,,,4.0,12.0,4.0,9.0,4.0
+2026-06-07,KBO,oh won-seok,unknown,ssg,1,1,0.0,,7.0,,,,2.0,,,,5.0,15.0,7.0,8.0,7.0
+2026-06-13,KBO,oh won-seok,unknown,nc,1,1,0.0,,2.0,,,,3.0,,,,5.0,15.0,4.0,5.0,2.0
+2026-06-10,KBO,park chan-hyeok,lg twins,ssg landers,1,1,4.0,2.0,1.0,2.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,park hae-min,lg twins,ssg landers,1,1,4.0,2.0,1.0,2.0,0.0,2.0,1.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,park ji-hoon,doosan bears,lotte giants,1,1,4.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,,,,,
+2026-04-26,KBO,park jun-hyun,unknown,samsung,1,1,0.0,,0.0,,,,4.0,,,,5.0,15.0,4.0,4.0,0.0
+2026-05-10,KBO,park jun-hyun,unknown,kt,1,1,0.0,,0.0,,,,4.0,,,,5.0,15.0,2.0,2.0,0.0
+2026-05-17,KBO,park jun-hyun,unknown,nc,1,1,0.0,,1.0,,,,2.0,,,,6.0,18.0,9.0,5.0,1.0
+2026-05-31,KBO,park jun-hyun,unknown,kt,1,1,0.0,,4.0,,,,2.0,,,,4.0,12.0,3.0,6.0,4.0
+2026-06-10,KBO,park jun-hyun,ssg landers,lg twins,1,1,5.0,2.0,1.0,0.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-11,KBO,park jun-hyun,unknown,nc,1,1,0.0,,1.0,,,,5.0,,,,4.0,12.0,1.0,3.0,1.0
+2026-06-10,KBO,park kun-woo,nc dinos,kiwoom heroes,1,1,5.0,2.0,1.0,2.0,2.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,park min-woo,nc dinos,kiwoom heroes,1,1,5.0,1.0,1.0,0.0,2.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-03-31,KBO,park se-woong,unknown,nc,1,1,0.0,,4.0,,,,1.0,,,,5.0,15.0,3.0,5.0,0.0
+2026-04-05,KBO,park se-woong,unknown,ssg,1,1,0.0,,3.0,,,,3.0,,,,5.0,15.0,3.0,6.0,3.0
+2026-04-12,KBO,park se-woong,unknown,kiwoom,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,8.0,5.0,2.0
+2026-04-19,KBO,park se-woong,unknown,hanwha,1,1,0.0,,3.0,,,,3.0,,,,5.0,15.0,4.0,7.0,2.0
+2026-04-25,KBO,park se-woong,unknown,kia,1,1,0.0,,4.0,,,,3.0,,,,5.0,15.0,7.0,5.0,4.0
+2026-05-10,KBO,park se-woong,unknown,kia,1,1,0.0,,2.0,,,,3.0,,,,6.0,18.0,4.0,4.0,2.0
+2026-05-16,KBO,park se-woong,unknown,doosan,1,1,0.0,,6.0,,,,4.0,,,,5.0,15.0,2.0,7.0,6.0
+2026-05-29,KBO,park se-woong,unknown,nc,1,1,0.0,,0.0,,,,1.0,,,,6.0,18.0,7.0,4.0,0.0
+2026-06-04,KBO,park se-woong,unknown,kia,1,1,0.0,,7.0,,,,3.0,,,,4.0,12.0,3.0,7.0,7.0
+2026-06-10,KBO,park se-woong,nc dinos,kiwoom heroes,1,1,5.0,2.0,0.0,2.0,2.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-11,KBO,park se-woong,unknown,doosan,1,1,0.0,,4.0,,,,2.0,,,,5.0,15.0,6.0,7.0,4.0
+2026-06-10,KBO,park seong-han,ssg landers,lg twins,1,1,4.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,1.0,0.0,,,,,
+2026-04-10,KBO,raul alcantara,unknown,lotte,1,1,0.0,,3.0,,,,0.0,,,,6.0,18.0,11.0,10.0,3.0
+2026-04-16,KBO,raul alcantara,unknown,kia,1,1,0.0,,3.0,,,,1.0,,,,6.0,18.0,6.0,6.0,2.0
+2026-04-22,KBO,raul alcantara,unknown,nc,1,1,0.0,,0.0,,,,1.0,,,,8.0,24.0,5.0,7.0,0.0
+2026-04-28,KBO,raul alcantara,unknown,lotte,1,1,0.0,,5.0,,,,2.0,,,,6.0,18.0,3.0,10.0,5.0
+2026-05-09,KBO,raul alcantara,unknown,kt,1,1,0.0,,3.0,,,,2.0,,,,5.0,15.0,2.0,9.0,3.0
+2026-05-15,KBO,raul alcantara,unknown,nc,1,1,0.0,,1.0,,,,0.0,,,,7.0,21.0,6.0,4.0,1.0
+2026-05-21,KBO,raul alcantara,unknown,ssg,1,1,0.0,,0.0,,,,1.0,,,,8.0,24.0,8.0,2.0,0.0
+2026-06-02,KBO,raul alcantara,unknown,ssg,1,1,0.0,,3.0,,,,1.0,,,,7.0,21.0,5.0,8.0,3.0
+2026-06-07,KBO,raul alcantara,unknown,doosan,1,1,0.0,,1.0,,,,1.0,,,,6.0,18.0,4.0,4.0,1.0
+2026-06-13,KBO,raul alcantara,unknown,hanwha,1,1,0.0,,1.0,,,,1.0,,,,7.0,21.0,6.0,5.0,1.0
+2026-05-06,KBO,riley thompson,unknown,ssg,1,1,0.0,,4.0,,,,1.0,,,,5.0,15.0,4.0,4.0,4.0
+2026-05-12,KBO,riley thompson,unknown,lotte,1,1,0.0,,1.0,,,,2.0,,,,5.0,15.0,5.0,3.0,1.0
+2026-05-17,KBO,riley thompson,unknown,kiwoom,1,1,0.0,,1.0,,,,0.0,,,,7.0,21.0,8.0,4.0,1.0
+2026-05-24,KBO,riley thompson,unknown,kt,1,1,0.0,,3.0,,,,1.0,,,,5.0,15.0,7.0,7.0,2.0
+2026-05-30,KBO,riley thompson,unknown,lotte,1,1,0.0,,2.0,,,,1.0,,,,5.0,15.0,8.0,7.0,2.0
+2026-06-11,KBO,riley thompson,unknown,kiwoom,1,1,0.0,,2.0,,,,1.0,,,,6.0,18.0,9.0,5.0,2.0
+2026-06-10,KBO,roh si-hwan,hanwha eagles,kia tigers,1,1,4.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,,,,,
+2026-04-01,KBO,ryu hyun-jin,unknown,kt,1,1,0.0,,2.0,,,,0.0,,,,5.0,15.0,4.0,3.0,1.0
+2026-04-07,KBO,ryu hyun-jin,unknown,ssg,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,10.0,4.0,2.0
+2026-04-18,KBO,ryu hyun-jin,unknown,lotte,1,1,0.0,,0.0,,,,0.0,,,,7.0,21.0,3.0,4.0,0.0
+2026-05-06,KBO,ryu hyun-jin,unknown,kia,1,1,0.0,,1.0,,,,1.0,,,,6.0,18.0,8.0,4.0,1.0
+2026-05-12,KBO,ryu hyun-jin,unknown,kiwoom,1,1,0.0,,3.0,,,,2.0,,,,5.0,15.0,9.0,5.0,3.0
+2026-05-17,KBO,ryu hyun-jin,unknown,kt,1,1,0.0,,2.0,,,,1.0,,,,5.0,15.0,3.0,5.0,2.0
+2026-05-30,KBO,ryu hyun-jin,unknown,ssg,1,1,0.0,,2.0,,,,1.0,,,,5.0,15.0,2.0,5.0,1.0
+2026-06-05,KBO,ryu hyun-jin,unknown,lotte,1,1,0.0,,2.0,,,,0.0,,,,6.0,18.0,2.0,3.0,0.0
+2026-06-10,KBO,ryu hyun-jin,doosan bears,lotte giants,1,1,3.0,2.0,0.0,0.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-06-11,KBO,ryu hyun-jin,unknown,kia,1,1,0.0,,1.0,,,,1.0,,,,6.0,18.0,5.0,7.0,1.0
+2026-06-10,KBO,sam hilliard,kt wiz,samsung lions,1,1,4.0,1.0,0.0,1.0,1.0,1.0,1.0,0.0,1.0,0.0,,,,,
+2026-06-10,KBO,seo geon-chang,kiwoom heroes,nc dinos,1,1,6.0,3.0,3.0,0.0,1.0,3.0,1.0,0.0,3.0,0.0,,,,,
+2026-06-11,KBO,takada takuto,unknown,lotte,1,1,0.0,,5.0,,,,5.0,,,,4.0,12.0,2.0,6.0,5.0
+2026-06-10,KBO,victor reyes,lotte giants,doosan bears,1,1,5.0,2.0,0.0,0.0,0.0,2.0,0.0,0.0,2.0,0.0,,,,,
+2026-04-26,KBO,wesley benjamin,unknown,lg,1,1,0.0,,3.0,,,,1.0,,,,7.0,21.0,5.0,10.0,3.0
+2026-05-08,KBO,wesley benjamin,unknown,ssg,1,1,0.0,,4.0,,,,1.0,,,,5.0,15.0,4.0,11.0,4.0
+2026-05-14,KBO,wesley benjamin,unknown,kia,1,1,0.0,,4.0,,,,1.0,,,,6.0,18.0,6.0,9.0,2.0
+2026-05-21,KBO,wesley benjamin,unknown,nc,1,1,0.0,,0.0,,,,1.0,,,,8.0,24.0,1.0,5.0,0.0
+2026-05-27,KBO,wesley benjamin,unknown,kt,1,1,0.0,,0.0,,,,2.0,,,,7.0,21.0,5.0,2.0,0.0
+2026-06-07,KBO,wesley benjamin,unknown,kiwoom,1,1,0.0,,4.0,,,,2.0,,,,3.0,9.0,2.0,8.0,4.0
+2026-06-13,KBO,wesley benjamin,unknown,kia,1,1,0.0,,2.0,,,,2.0,,,,6.0,18.0,7.0,5.0,2.0
+2026-06-10,KBO,yang eui-ji,doosan bears,lotte giants,1,1,4.0,3.0,2.0,2.0,0.0,6.0,1.0,0.0,2.0,0.0,,,,,
+2026-06-10,KBO,yonathan perlaza,hanwha eagles,kia tigers,1,1,4.0,1.0,1.0,1.0,2.0,4.0,0.0,0.0,0.0,0.0,,,,,

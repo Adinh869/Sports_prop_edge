@@ -1,0 +1,12 @@
+---
+description: Sports Prop Edge - separate from esports_prop_edge
+alwaysApply: true
+---
+
+# Sports Prop Edge
+
+Standalone project. Do not mix with esports_prop_edge.
+
+Pipeline: load props/history -> SportPropProjector -> score_props -> cards/tracker.
+
+Live data: PrizePicks (integrations/prizepicks_source.py), NBA (nba_api), NFL (nfl_data_py), KBO (MyKBO/CSV).
