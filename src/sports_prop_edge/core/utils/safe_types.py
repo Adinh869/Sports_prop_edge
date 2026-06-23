@@ -11,10 +11,11 @@ import pandas as pd
 def ensure_series(x: Any, *, index: pd.Index | None = None) -> pd.Series:
     """Normalize values to a pandas Series before fillna/dropna/to_numeric chains.
 
-    - None -> empty Series
+    - None -> empty Series(dtype=float)
     - float/int/numpy scalar -> Series([x])
     - numpy ndarray -> Series(x)
     - Series -> unchanged
+    - DataFrame -> first column, or empty Series if empty
     """
     if x is None:
         if index is not None:
@@ -25,16 +26,17 @@ def ensure_series(x: Any, *, index: pd.Index | None = None) -> pd.Series:
         return x
 
     if isinstance(x, pd.DataFrame):
-        if x.shape[1] == 1:
-            return x.iloc[:, 0]
-        return pd.Series(x.to_numpy().ravel())
+        if x.empty:
+            return pd.Series(dtype=float, index=index)
+        first_col = x.iloc[:, 0]
+        return ensure_series(first_col, index=index)
 
     if isinstance(x, np.ndarray):
         if x.ndim == 0:
             scalar = x.item()
             if index is not None:
-                return pd.Series(scalar, index=index, dtype=type(scalar) if not pd.isna(scalar) else float)
-            return pd.Series([scalar])
+                return pd.Series(scalar, index=index, dtype=float)
+            return pd.Series([scalar], dtype=float)
         return pd.Series(x)
 
     if isinstance(x, (np.floating, np.integer, float, int, bool)):
@@ -43,11 +45,17 @@ def ensure_series(x: Any, *, index: pd.Index | None = None) -> pd.Series:
         return pd.Series([x], dtype=float)
 
     if isinstance(x, (list, tuple)):
-        series = pd.Series(x)
+        series = pd.Series(x, dtype=float)
         if index is not None and len(series) == len(index):
             series.index = index
         return series
 
     if index is not None:
-        return pd.Series(x, index=index)
-    return pd.Series([x])
+        return pd.Series(x, index=index, dtype=float)
+    return pd.Series([x], dtype=float)
+
+
+def coerce_numeric_series(x: Any, *, index: pd.Index | None = None) -> pd.Series:
+    """Safe replacement for ``pd.to_numeric(x).dropna()`` / fillna chains on scalars."""
+    # prevents numpy scalar crash in production fallback mode
+    return ensure_series(pd.to_numeric(x, errors="coerce"), index=index)

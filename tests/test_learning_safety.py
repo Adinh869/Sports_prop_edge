@@ -6,10 +6,11 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from sports_prop_edge.core.utils.safe_types import ensure_series
+from sports_prop_edge.core.utils.safe_types import coerce_numeric_series, ensure_series
 from sports_prop_edge.strategy.learning_feedback import (
     compute_simulation_vs_actual_bias,
     compute_sport_market_bias,
+    frame_numeric_column,
     safe_dropna,
     safe_fillna,
     safe_numeric_column_dropna,
@@ -84,3 +85,19 @@ def test_governance_overlay_float_scalar_values():
 def test_safe_overlay_float_handles_none_and_scalar():
     assert _safe_overlay_float(None, 1.0) == 1.0
     assert _safe_overlay_float(np.float64(1.15), 1.0) == pytest.approx(1.15)
+
+
+def test_coerce_numeric_series_scalar_dropna_pattern():
+    """Regression: pd.to_numeric(scalar).dropna() must not be called directly."""
+    for value in (None, 1.5, np.float64(2.5), np.float64(np.nan)):
+        series = coerce_numeric_series(value).dropna()
+        assert isinstance(series, pd.Series)
+
+
+def test_frame_numeric_column_missing_column():
+    frame = pd.DataFrame({"result": ["WIN", "LOSS"]})
+    col = frame_numeric_column(frame, "profit_units")
+    assert isinstance(col, pd.Series)
+    assert col.isna().all()
+    dropped = safe_numeric_column_dropna(frame, "profit_units")
+    assert dropped.empty

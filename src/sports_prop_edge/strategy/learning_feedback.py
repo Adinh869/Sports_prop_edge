@@ -17,7 +17,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from sports_prop_edge.core.utils.safe_types import ensure_series
+from sports_prop_edge.core.utils.safe_types import coerce_numeric_series
 from sports_prop_edge.models.calibration import (
     build_calibration_factors,
     probability_bin_label,
@@ -244,8 +244,7 @@ def _market_key(sport: str, market: str) -> str:
 def safe_fillna(value: Any, fill_value: Any = 0.0) -> pd.Series:
     """Fill missing values for pandas objects; coerce numpy/python scalars safely."""
     # prevents numpy scalar crash in production fallback mode
-    series = pd.to_numeric(ensure_series(value), errors="coerce")
-    return series.fillna(fill_value)
+    return coerce_numeric_series(value).fillna(fill_value)
 
 
 def frame_numeric_column(frame: pd.DataFrame, column: str) -> pd.Series:
@@ -253,21 +252,19 @@ def frame_numeric_column(frame: pd.DataFrame, column: str) -> pd.Series:
     if column not in frame.columns:
         return pd.Series(np.nan, index=frame.index, dtype=float)
     # prevents numpy scalar crash in production fallback mode
-    raw = ensure_series(frame[column], index=frame.index)
-    return pd.to_numeric(raw, errors="coerce")
+    return coerce_numeric_series(frame[column], index=frame.index)
 
 
 def safe_dropna(value: Any) -> pd.Series:
     """Drop missing values; always returns a Series (never crashes on scalars)."""
     # prevents numpy scalar crash in production fallback mode
-    series = pd.to_numeric(ensure_series(value), errors="coerce")
-    return series.dropna()
+    return coerce_numeric_series(value).dropna()
 
 
 def safe_numeric_column_dropna(frame: pd.DataFrame, column: str) -> pd.Series:
     """Safe replacement for ``pd.to_numeric(frame[col]).dropna()``."""
     # prevents numpy scalar crash in production fallback mode
-    return safe_dropna(frame_numeric_column(frame, column))
+    return coerce_numeric_series(frame_numeric_column(frame, column)).dropna()
 
 
 def _filter_ledger_window(ledger: pd.DataFrame, days: int | None) -> pd.DataFrame:

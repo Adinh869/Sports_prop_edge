@@ -14,9 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal
 
-import pandas as pd
-
-from sports_prop_edge.core.utils.safe_types import ensure_series
+from sports_prop_edge.core.utils.safe_types import coerce_numeric_series
 from sports_prop_edge.strategy.learning_feedback import (
     LearningLoopResult,
     LearningOverlay,
@@ -272,10 +270,10 @@ def _clamp(value: float, lo: float, hi: float) -> float:
 def _safe_overlay_float(value: Any, default: float) -> float:
     """Coerce overlay numeric values without scalar pandas/numpy crashes."""
     # prevents numpy scalar crash in production fallback mode
-    series = pd.to_numeric(ensure_series(value), errors="coerce")
-    if series.empty or series.isna().all():
+    series = coerce_numeric_series(value).dropna()
+    if series.empty:
         return float(default)
-    return float(series.iloc[0] if len(series) == 1 else series.dropna().iloc[-1])
+    return float(series.iloc[-1])
 
 
 def _log_drift(factor: float, neutral: float = 1.0) -> float:
