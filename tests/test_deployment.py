@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 
+import pandas as pd
 import pytest
 
 pytest.importorskip("fastapi")
@@ -63,6 +64,11 @@ def secured_client(tmp_path):
         yield test_client
 
 
+def _register_slate(client, slate_id: str) -> None:
+    engine = client.app.state.engine
+    engine.register_slate_inputs(slate_id, None, pd.DataFrame(_sgp_rows()), None)
+
+
 def test_health_endpoint(client):
     response = client.get("/system/health")
     assert response.status_code == 200
@@ -73,14 +79,25 @@ def test_health_endpoint(client):
 
 
 def test_run_slate_post(client):
-    response = client.post(
-        "/slate/deploy-test/run",
-        json={"sgps": _sgp_rows()},
-    )
+    _register_slate(client, "deploy-test")
+    response = client.post("/slate/deploy-test/run")
     assert response.status_code == 200
     body = response.json()
     assert body["slate_id"] == "deploy-test"
     assert body["ok"] is True
+
+
+def test_run_slate_post_without_body_no_422(client):
+    _register_slate(client, "no-body-test")
+    response = client.post("/slate/no-body-test/run")
+    assert response.status_code != 422
+    assert response.status_code == 200
+
+
+def test_run_slate_post_openapi_has_no_request_body(client):
+    schema = client.app.openapi()
+    post_op = schema["paths"]["/slate/{slate_id}/run"]["post"]
+    assert "requestBody" not in post_op
 
 
 def test_run_slate_get_without_inputs_returns_404(client):
@@ -89,12 +106,12 @@ def test_run_slate_get_without_inputs_returns_404(client):
 
 
 def test_api_key_required_when_configured(secured_client):
-    no_key = secured_client.post("/slate/secure/run", json={"sgps": _sgp_rows()})
+    _register_slate(secured_client, "secure")
+    no_key = secured_client.post("/slate/secure/run")
     assert no_key.status_code == 401
 
     with_key = secured_client.post(
         "/slate/secure/run",
-        json={"sgps": _sgp_rows()},
         headers={"X-API-Key": "secret-key"},
     )
     assert with_key.status_code == 200

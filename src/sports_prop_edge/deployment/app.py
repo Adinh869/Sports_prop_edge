@@ -4,23 +4,13 @@ from __future__ import annotations
 
 from typing import Any
 
-import pandas as pd
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
 
 from sports_prop_edge.deployment.config import ServiceConfig, get_config
 from sports_prop_edge.deployment.security import require_api_key
 from sports_prop_edge.live.api import _serialize_run_result, _serialize_status
 from sports_prop_edge.live.engine import LiveEngine, LiveEngineConfig
-
-
-class SlateRunRequest(BaseModel):
-    """Optional slate payload for register-and-run."""
-
-    props: list[dict[str, Any]] | None = None
-    sgps: list[dict[str, Any]] = Field(default_factory=list)
-    power_cards: list[dict[str, Any]] | None = None
 
 
 def create_production_app(
@@ -91,14 +81,8 @@ def create_production_app(
         return _run_slate(live_engine, slate_id)
 
     @app.post("/slate/{slate_id}/run", dependencies=[Depends(require_api_key)])
-    def run_slate_post(slate_id: str, body: SlateRunRequest) -> dict[str, Any]:
-        """Register slate inputs and execute live pipeline in one request."""
-        live_engine.register_slate_inputs(
-            slate_id,
-            _rows_to_df(body.props),
-            _rows_to_df(body.sgps),
-            _rows_to_df(body.power_cards),
-        )
+    def run_slate_post(slate_id: str) -> dict[str, Any]:
+        """Execute live pipeline for a pre-registered slate (no request body)."""
         return _run_slate(live_engine, slate_id)
 
     @app.get("/slate/{slate_id}/status", dependencies=[Depends(require_api_key)])
@@ -118,7 +102,7 @@ def _run_slate(engine: LiveEngine, slate_id: str) -> dict[str, Any]:
     if inputs is None:
         raise HTTPException(
             status_code=404,
-            detail=f"no registered inputs for slate {slate_id}; POST payload to /slate/{slate_id}/run",
+            detail=f"no registered inputs for slate {slate_id}; register slate before run",
         )
     result = engine.run_slate_live(
         slate_id,
@@ -127,12 +111,6 @@ def _run_slate(engine: LiveEngine, slate_id: str) -> dict[str, Any]:
         inputs.power_cards,
     )
     return _serialize_run_result(result)
-
-
-def _rows_to_df(rows: list[dict[str, Any]] | None) -> pd.DataFrame | None:
-    if not rows:
-        return None
-    return pd.DataFrame(rows)
 
 
 app = create_production_app()
